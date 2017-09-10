@@ -1,0 +1,17 @@
+.logo input{
+    
+    background-image: url('../assets/enter.png');
+
+    position: absolute;
+    margin-left: 55%;
+    margin-top: -15.8%;
+    
+    width: 1100px;
+    height: 527px;
+
+    cursor: pointer;
+
+    -moz-transform:scale(0.1);
+    -webkit-transform:scale(0.1);
+    transform:scale(0.1);
+}
