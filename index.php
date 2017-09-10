@@ -13,6 +13,16 @@
     <body>
         <nav>
             <form method="post">
+                <ul>
+                    <li>
+                        <span>Login:</span>
+                        <input type="text" class="" value="" name="login" maxlength="20">
+                    </li>
+                    <li>
+                        <span>Password:</span>
+                        <input type="password" class="" value="" name="pass" maxlength="20">
+                    </li>
+                </ul>
                 <div class="logo">
                     <input type="submit" value="" name="">
                 </div>
