@@ -1,5 +1,11 @@
 <?php
-//przenoszenie do strony glownej usera
+
+include 'php/dbutils.php';
+
+//$conn = DbUtils::getConnection();
+
+//echo($conn->query('select * from Users'));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
