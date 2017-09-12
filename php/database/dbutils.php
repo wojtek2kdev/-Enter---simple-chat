@@ -1,4 +1,4 @@
-<?php namespace dbutils;
+<?php
         
     include 'dbinfo.php';
 
@@ -6,7 +6,7 @@
 
          public static function getConnection(){
             
-            return mysqli_connect(DbInfo::IP, DbInfo::USER, DbInfo::PASSWORD, 'Enter');
+              return new mysqli(DbInfo::IP, DbInfo::USER, DbInfo::PASSWORD, 'Enter');
 
          }
         

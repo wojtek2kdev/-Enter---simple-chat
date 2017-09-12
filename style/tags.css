@@ -25,60 +25,8 @@ nav {
 
 }
 
-nav form button {
 
-    background: transparent;
-
-    width: 1000px;
-    height: 100px;
-
-}
-
-nav form ul{
-
-    position: absolute;
-
-    margin-left: 37%;
-    margin-top: 0.5%;
-
-    width: 80%;
-    height: 100%;
-}
-
-nav form ul li{
-
-    list-style-type: none;
-
-    float: left;
-    margin-left: 10px;
-    margin-top: 1%;
-
-}
-
-nav form ul li span{
-
-    font-size: 25px;
-    margin-top: 10%;
-
-}
-
-nav form ul li input{
     
-    margin-top: 0;
-    padding 20px 5px;
-    line-height: 25px;
-    
-    
-    font-size: 16px;
-
-    border: 2px solid black; 
-    border-radius: 3px;
-}
-
-nav form ul li input:focus{
 
 
-    background-color: rgba(0,0,0,.05);   
-
-}
 
