@@ -56,6 +56,14 @@ include 'php/database/dbutils.php';
                 <header>
                     <h1>Register</h1>
                 </header>
+                <div id="regform">
+                   <form method="post"> 
+                    <input type="text" placeholder='Login..'  name="login">
+                    <input type="text" placeholder='Nickname..' name="nick">
+                    <input type="password" placeholder='Password..'  name="password">
+                    <input type="password" placeholder='Confirm password..'  name="confirm">
+                   </form>
+                </div>
              </article>
             </section>
         </main>
