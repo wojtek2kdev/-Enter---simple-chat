@@ -1,7 +1,6 @@
 <?php
 
-include 'php/database/dbutils.php';
-
+include 'php/database/dbutils.php'; //require_once
 
 ?>
 <!DOCTYPE html>
@@ -12,6 +11,7 @@ include 'php/database/dbutils.php';
         <link href="style/classes.css" rel="stylesheet">
         <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
         <link href="style/ids.css" rel="stylesheet">
+        <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
         <script src="jquery-3.2.1.min.js"></script>
         <title>Enter - simple chat</title>
     </head>
@@ -43,7 +43,7 @@ include 'php/database/dbutils.php';
                             <li>Web: html5, css3, js (ES6)</li>
                         </ul>
                         <p>
-                        Click here to see my GitHub: 
+                        Click here to see my GitHub:
                           <a target='_blank' href="https://github.com/wojtek2kdev/-Enter---simple-chat">
                           <img src="assets/github.png" alt="GitHub" class='github'>
                           </a>
@@ -60,8 +60,18 @@ include 'php/database/dbutils.php';
                    <form method="post"> 
                     <input type="text" placeholder='Login..'  name="login">
                     <input type="text" placeholder='Nickname..' name="nick">
-                    <input type="password" placeholder='Password..'  name="password">
+                    <input type="password" placeholder='Password.. (min 8 chars)'  name="password">
+                    <div>
                     <input type="password" placeholder='Confirm password..'  name="confirm">
+                    <i class="error warning circle icon" title='Error'></i>
+                    </div>
+                    
+                   <div id="errorlog">
+                        <span>
+                            
+                        </span>
+                    </div>
+                    <input type="submit" style='margin-top: 7%;' class="ui inverted green button" value="Create account" name="">
                    </form>
                 </div>
              </article>

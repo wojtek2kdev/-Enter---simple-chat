@@ -32,7 +32,7 @@
 
 #regform {
 
-    width: 50%;
+    width: 60%;
     
     display: block;
 
@@ -41,12 +41,19 @@
 
 }
 
-#regform form input {
+#regform form input, div {
 
         display: block;
 
         margin-left: auto;
         margin-right: auto;
         margin-top: 3%;
+
+}
+
+#regform form div span{
+
+    color: red;
+    text-align: center;
 
 }

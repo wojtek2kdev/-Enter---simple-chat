@@ -1,6 +1,6 @@
 <?php
         
-    include 'dbinfo.php';
+    include 'dbinfo.php'; //require_once
 
     class DbUtils{
 
