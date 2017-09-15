@@ -4,7 +4,6 @@
     width: 50%;
     height: 100%;
 
-
 }
 
 #register{
@@ -12,6 +11,15 @@
     width: 50%;
     height: 100%;
 
-    margin-left: 50%;
+}
+
+#desc {
+
+    display: block;
+
+    width: 60%;
+
+    margin-left: auto;
+    margin-right: auto;
 
 }

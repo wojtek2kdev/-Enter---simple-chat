@@ -25,6 +25,12 @@ nav {
 
 }
 
+section {
+
+    float: left;
+
+}
+
 article {
 
     margin-top: 25%;
@@ -40,6 +46,20 @@ header {
 h1 {
 
     font-size: 50px;
+
+}
+
+#desc p {
+
+    word-wrap: break-word;
+    font-size: 20px;
+    text-align: justify;
+
+}
+
+#desc p ul{
+    
+    font-size: 25px;
 
 }
 
