@@ -12,7 +12,8 @@ include 'php/database/dbutils.php'; //require_once
         <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
         <link href="style/ids.css" rel="stylesheet">
         <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
-        <script src="jquery-3.2.1.min.js"></script>
+        <script src="scripts/jquery-3.2.1.js"></script>
+        <script src='scripts/validation.js'></script>
         <title>Enter - simple chat</title>
     </head>
     <body>
@@ -63,7 +64,8 @@ include 'php/database/dbutils.php'; //require_once
                     <input type="password" placeholder='Password.. (min 8 chars)'  name="password">
                     <div>
                     <input type="password" placeholder='Confirm password..'  name="confirm">
-                    <i class="error warning circle icon" title='Error'></i>
+                    <i id='pass_err' class="error warning circle icon" title="Passwords aren't same."></i>
+                    <script>$('#pass_err').hide();</script>
                     </div>
                     
                    <div id="errorlog">
