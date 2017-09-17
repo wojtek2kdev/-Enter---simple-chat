@@ -16,18 +16,18 @@
 
     class RegisterValidation extends Validation{
 
-        private  $nick, $login, $password;
+        private static $nick, $login, $password;
 
         public static function validate($n, $l, $p){
 
-            self::$nick = normalize($n);
-            self::$login = normalize($l);
-            self::$password = normalize($p);
+            self::$nick = parent::normalize($n);
+            self::$login = parent::normalize($l);
+            self::$password = parent::normalize($p);
 
             try{
-                isNickSet();
-                isLoginSet();
-                isPasswordSet();
+                self::isLoginSet();
+                self::isNickSet();
+                self::isPasswordSet();
             }catch(Exception $e){
                 return $e->getMessage();
             }
@@ -35,19 +35,19 @@
         }
 
         private static function isNickSet(){
-            if(!strlen($nick)){
+            if(!strlen(self::$nick)){
                 throw new Exception("Nickname isn't set!");
             }
         }
 
         private static function isLoginSet(){
-            if(!strlen($login)){
+            if(!strlen(self::$login)){
                 throw new Exception("Login isn't set!");
             }
         }
 
         private static function isPasswordSet(){
-             if(!strlen($password)){
+             if(!strlen(self::$password)){
                 throw new Exception("Password isn't set!");
              }
         }
