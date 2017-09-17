@@ -1,6 +1,6 @@
 <?php
 
-    include '../database/dbutils.php';
+    require_once($_SERVER['DOCUMENT_ROOT'].'/database/dbutils.php');
 
     class Account{
 
