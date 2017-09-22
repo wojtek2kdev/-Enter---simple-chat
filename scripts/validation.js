@@ -1,11 +1,7 @@
 const checkPassword = function(){
 
     $('input[name=password]').val() === $('input[name=confirm]').val() ? 
-        isPasswordStrong() : (() => {
-            $('#pass_err').attr('title', "Passwords aren't same");
-            $('#pass_err').show();
-        })();
-
+        isPasswordStrong() : (() => {throw "Passwords aren't same"})()
 };
 
 const isPasswordStrong = function(){
@@ -13,26 +9,54 @@ const isPasswordStrong = function(){
     let passLength = $('input[name=password]').val().length;
 
     if(passLength == 0){
-        $('#pass_err').hide();
+        hideErr();
     }else{
-    passLength >= 8 ? $('#pass_err').hide() : (() => {
-            $('#pass_err').attr('title', "Password isn't strong enough. (min 8 chars)");
-            $('#pass_err').show();
-        })();
+    passLength >= 8 ? (() => {
+        hideErr();
+        enableSubmit();
+     })() : (() => {throw "Password isn't strong enough. (min 8 letters)"})()
+
     }
 };
 
-const addListeners = function(){
+const isNickTooLong = (nickLen) => nickLen > 20;
 
+const isNickEmpty = (nickLen) => nickLen;
 
-    document.getElementsByName('password')[0].addEventListener('input', checkPassword);
+const setAttrib = (obj, attr, val='') => $(obj).attr(attr,val);
 
-    document.getElementsByName('confirm')[0].addEventListener('input', checkPassword);
+const disableSubmit = () => $('#submit').attr('disabled', '');
+
+const enableSubmit = () => $('#submit').removeAttr('disabled');
+
+const showErr = () => $('#pass_err').show();
+
+const hideErr = () => $('#pass_err').hide();
+
+const validation = function(){
+
+    try{
+        checkPassword();
+    }catch(e){ 
+        disableSubmit();
+        setAttrib('#pass_err', 'title', e);
+        showErr();
+    } 
+
+}
+
+const preInit = function(){
+
+    disableSubmit();
+
+    document.getElementsByName('password')[0].addEventListener('input', validation);
+
+    document.getElementsByName('confirm')[0].addEventListener('input', validation);
 
 };
 
 (function init(){
 
-    document.addEventListener('DOMContentLoaded', addListeners);
+    document.addEventListener('DOMContentLoaded', preInit);
 
 })();
