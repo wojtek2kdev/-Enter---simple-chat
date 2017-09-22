@@ -70,7 +70,7 @@
                 <div id="regform">
                    <form method="post"> 
                     <input type="text" placeholder='Login..'  name="login">
-                    <input type="text" placeholder='Nickname..' name="nick" maxlength='20'>
+                    <input type="text" placeholder='Nickname.. (without spaces)' name="nick" maxlength='20'>
                     <input type="password" placeholder='Password.. (min 8 letters)'  name="password">
                     <div>
                     <input type="password" placeholder='Confirm password..'  name="confirm">

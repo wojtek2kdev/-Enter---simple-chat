@@ -26,43 +26,49 @@
             self::$confirm = parent::normalize($c);
 
             try{
-                self::isLoginSet();
-                self::isNickSet();
-                self::isPasswordSet();
-                self::arePasswordsSame();
-                self::isPasswordStrong();
+                self::isLoginSet($l);
+                self::isNickSet($n);
+                self::isPasswordSet($p);
+                self::arePasswordsSame($p, $c);
+                self::isPasswordStrong($p);
             }catch(Exception $e){
                 return $e->getMessage();
             }
 
         }
 
-        private static function isNickSet(){
-            if(!strlen(self::$nick)){
+        private static function isNickSet($n){
+            if(!strlen($n)){
                 throw new Exception("Nickname isn't set!");
             }
         }
 
-        private static function isLoginSet(){
-            if(!strlen(self::$login)){
+        private static function isNickTooLong($n){
+            if(strlen($n) > 20){
+                throw new Exception("Nickname is too long! (max 20 letters)");
+            }
+        }
+
+        private static function isLoginSet($l){
+            if(!strlen($l)){
                 throw new Exception("Login isn't set!");
             }
         }
 
-        private static function isPasswordSet(){
-             if(!strlen(self::$password)){
+        private static function isPasswordSet($p){
+             if(!strlen($p)){
                 throw new Exception("Password isn't set!");
              }
         }
 
-        private static function arePasswordsSame(){
-            if(self::$password != self::$confirm){
+        private static function arePasswordsSame($p, $c){
+            if($p != $c){
                 throw new Exception("Passwords aren't same!");
             } 
         }
 
-        private static function isPasswordStrong(){
-            if(strlen(self::$password) < 8){
+        private static function isPasswordStrong($p){
+            if(strlen($p) < 8){
                 throw new Exception('Password must have min. 8 letters!');
             }
         }

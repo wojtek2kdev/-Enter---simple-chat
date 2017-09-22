@@ -19,6 +19,15 @@ const isPasswordStrong = function(){
     }
 };
 
+const isInputCorrect = function(input){
+
+ for(let i in input){
+    if(input[i] != ' ') return true;
+ }
+    throw "Input must includes letter!";
+
+}
+
 const isNickTooLong = (nickLen) => {if(nickLen > 20) throw "Nickname is too long (max 20 letters)"};
 
 const isInputEmpty = (inputLen, name) => {if(!inputLen) throw `${name} is empty!`};
@@ -39,6 +48,7 @@ const validation = function(){
     let nickLen = $('[name=nick]').val().length;
 
     try{
+        isInputCorrect(document.activeElement.value);
         checkPassword();
         isNickTooLong(nickLen);
         isInputEmpty(loginLen, 'Login');
