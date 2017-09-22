@@ -19,9 +19,9 @@ const isPasswordStrong = function(){
     }
 };
 
-const isNickTooLong = (nickLen) => nickLen > 20;
+const isNickTooLong = (nickLen) => {if(nickLen > 20) throw "Nickname is too long (max 20 letters)"};
 
-const isNickEmpty = (nickLen) => nickLen;
+const isInputEmpty = (inputLen, name) => {if(!inputLen) throw `${name} is empty!`};
 
 const setAttrib = (obj, attr, val='') => $(obj).attr(attr,val);
 
@@ -35,8 +35,14 @@ const hideErr = () => $('#pass_err').hide();
 
 const validation = function(){
 
+    let loginLen = $('[name=login]').val().length;
+    let nickLen = $('[name=nick]').val().length;
+
     try{
         checkPassword();
+        isNickTooLong(nickLen);
+        isInputEmpty(loginLen, 'Login');
+        isInputEmpty(nickLen, 'Nickname');
     }catch(e){ 
         disableSubmit();
         setAttrib('#pass_err', 'title', e);
@@ -49,9 +55,7 @@ const preInit = function(){
 
     disableSubmit();
 
-    document.getElementsByName('password')[0].addEventListener('input', validation);
-
-    document.getElementsByName('confirm')[0].addEventListener('input', validation);
+    document.getElementsByTagName('form')[0].addEventListener('input', validation);
 
 };
 
