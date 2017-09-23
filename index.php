@@ -1,6 +1,15 @@
 <?php
 
-include 'php/database/dbutils.php'; //require_once
+    include('./php/data-validation.php');
+
+    $error = '';
+
+    if(isset($_POST['login'])){
+        
+        $error =  RegisterValidation::validate($_POST['nick'], $_POST['login'], 
+            $_POST['password'], $_POST['confirm']); 
+
+    }
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +42,7 @@ include 'php/database/dbutils.php'; //require_once
                 <div id="desc">
                     <p>"Enter" - simple internet chat similar to Discord (but very simpler)
                          <br/>
-                        This is <strong> open source </strong> project, which I create because I want to learn writing client-server web apps with databases and server administration. This page isn't responsive and nice as front-end, I'm focused on back-end, layout is very basic.
+                        This is <strong> open source </strong> project, which I create because I want to learn server administration and writing client-server web apps with databases. This page isn't responsive and nice as front-end, I'm focused on back-end, layout is very basic.
                         <br/>
                         In this project I use these technologies: <br/>
                     </p>
@@ -60,8 +69,8 @@ include 'php/database/dbutils.php'; //require_once
                 <div id="regform">
                    <form method="post"> 
                     <input type="text" placeholder='Login..'  name="login">
-                    <input type="text" placeholder='Nickname..' name="nick">
-                    <input type="password" placeholder='Password.. (min 8 chars)'  name="password">
+                    <input type="text" placeholder='Nickname.. (without spaces)' name="nick" maxlength='20'>
+                    <input type="password" placeholder='Password.. (min 8 letters)'  name="password">
                     <div>
                     <input type="password" placeholder='Confirm password..'  name="confirm">
                     <i id='pass_err' class="error warning circle icon" title="Passwords aren't same."></i>
@@ -70,10 +79,12 @@ include 'php/database/dbutils.php'; //require_once
                     
                    <div id="errorlog">
                         <span>
-                            
+                            <?php 
+                                echo($error);
+                            ?> 
                         </span>
                     </div>
-                    <input type="submit" style='margin-top: 7%;' class="ui inverted green button" value="Create account" name="">
+                         <input id='submit' type="submit" style='margin-top: 7%;' class="ui inverted green button" value="Create account" name="">
                    </form>
                 </div>
              </article>

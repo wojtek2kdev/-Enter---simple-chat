@@ -1,12 +1,20 @@
 <?php
 
-    include '../database/dbutils.php';
+    require('../php/database/dbutils.php');
 
     class Account{
-        
-        public static function login(){
+
+        public function login($login, $password){
+
+             
 
         }
+
+        public function logout(){
+
+            
+
+        } 
 
     }
 
