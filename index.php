@@ -7,7 +7,7 @@
     if(isset($_POST['login'])){
         
         $error =  RegisterValidation::validate($_POST['nick'], $_POST['login'], 
-            $_POST['password'], $_POST['confirm']); 
+            $_POST['password'], $_POST['confirm'], $_POST['g-recaptcha-response']); 
 
     }
 
@@ -23,6 +23,7 @@
         <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
         <script src="scripts/jquery-3.2.1.js"></script>
         <script src='scripts/validation.js'></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <title>Enter - simple chat</title>
     </head>
     <body>
@@ -76,7 +77,7 @@
                     <i id='pass_err' class="error warning circle icon" title="Passwords aren't same."></i>
                     <script>$('#pass_err').hide();</script>
                     </div>
-                    
+                   <div class="g-recaptcha" data-sitekey="6LeRzTEUAAAAABAZRLh3DdjeX8aol7Lvm9mJEcRl" name></div> 
                    <div id="errorlog">
                         <span>
                             <?php 
