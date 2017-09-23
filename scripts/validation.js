@@ -30,6 +30,8 @@ const isInputCorrect = function(input){
 
 const isNickTooLong = (nickLen) => {if(nickLen > 20) throw "Nickname is too long (max 20 letters)"};
 
+const isLoginTooLong = (loginLen) => {if(loginLen > 20) throw "Login is too long (max 20 letters)"};
+
 const isInputEmpty = (inputLen, name) => {if(!inputLen) throw `${name} is empty!`};
 
 const setAttrib = (obj, attr, val='') => $(obj).attr(attr,val);
@@ -50,6 +52,7 @@ const validation = function(){
     try{
         isInputCorrect(document.activeElement.value);
         checkPassword();
+        isLoginTooLong(loginLen);
         isNickTooLong(nickLen);
         isInputEmpty(loginLen, 'Login');
         isInputEmpty(nickLen, 'Nickname');

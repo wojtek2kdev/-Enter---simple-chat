@@ -1,7 +1,6 @@
 <?php
 
-    require_once('php/database/dbutils.php');
-    require_once('php/data-validation.php');
+    include('./php/data-validation.php');
 
     $error = '';
 
