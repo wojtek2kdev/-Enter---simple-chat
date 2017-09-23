@@ -1,14 +1,16 @@
 <?php
 
     include(__DIR__.'/user/register.php');
+    include(__DIR__.'/captcha.php');
+    
 
     class Validation{
 
-        private function __construct(){}
+        protected function __construct(){}
 
-        private function __clone(){}
+        protected function __clone(){}
 
-        public static function normalize($data){
+        protected static function normalize($data){
 
             return htmlentities($data, ENT_QUOTES, 'utf-8');
 
@@ -18,14 +20,15 @@
 
     class RegisterValidation extends Validation{
 
-        private static $_nick, $_login, $_password, $_confirm;
+        private static $_nick, $_login, $_password, $_confirm, $_verification;
 
-        public static function validate($n, $l, $p, $c){
+        public static function validate($n, $l, $p, $c, $v){
 
             self::$_nick = parent::normalize($n);
             self::$_login = parent::normalize($l);
             self::$_password = parent::normalize($p);
             self::$_confirm = parent::normalize($c);
+            self::$_verification = $v;
 
             try{
                 self::_isLoginSet($l);
@@ -36,6 +39,9 @@
                 self::_isLoginTooLong($l);
                 self::_isNickTooLong($n);
                 self::_areInputsCorrect([$l,$n,$p,$c]);
+
+                $captcha = new Captcha(self::$_verification);
+                $captcha->checkCaptcha();
 
                 $register = new Register(self::$_login, self::$_nick, self::$_password);
                 $register->isExistUserWithNick();

@@ -7,7 +7,7 @@
     if(isset($_POST['login'])){
         
         $error =  RegisterValidation::validate($_POST['nick'], $_POST['login'], 
-            $_POST['password'], $_POST['confirm']); 
+            $_POST['password'], $_POST['confirm'], $_POST['g-recaptcha-response']); 
 
     }
 
@@ -77,7 +77,7 @@
                     <i id='pass_err' class="error warning circle icon" title="Passwords aren't same."></i>
                     <script>$('#pass_err').hide();</script>
                     </div>
-                   <div class="g-recaptcha" data-sitekey="6LeRzTEUAAAAABAZRLh3DdjeX8aol7Lvm9mJEcRl"></div> 
+                   <div class="g-recaptcha" data-sitekey="6LeRzTEUAAAAABAZRLh3DdjeX8aol7Lvm9mJEcRl" name></div> 
                    <div id="errorlog">
                         <span>
                             <?php 
