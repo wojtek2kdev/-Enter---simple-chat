@@ -1,6 +1,7 @@
 <?php
 
     include('./php/data-validation.php');
+    include('./style/theme/login-elements.php');
 
     $error = '';
 
@@ -27,13 +28,7 @@
         <title>Enter - simple chat</title>
     </head>
     <body>
-        <nav>
-           <div class="logo"></div>
-            <div class="login">
-                <span>Do you have account? So, </span>
-                <button id='login' class='ui basic green button'>Log In</button>
-            </div>
-        </nav>
+        <?php echo(Element::getElement('nav')); ?> 
         <main>
             <section id='about'>
              <article>
