@@ -2,7 +2,7 @@
 
     session_start();
 
-    include('./style/theme/login-elements.php');
+    require('./style/theme/login-elements.php');
     
     if(!isset($_SESSION['new_user'])){
         //if will be user account session then header location to user main page

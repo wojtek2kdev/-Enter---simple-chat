@@ -1,7 +1,7 @@
 <?php
 
     include('./php/data-validation.php');
-    include('./style/theme/login-elements.php');
+    require('./style/theme/login-elements.php');
 
     $error = '';
 

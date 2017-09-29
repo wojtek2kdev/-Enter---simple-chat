@@ -15,10 +15,10 @@
         private static function _getNav(){
             return "
              <nav>
-                 <div class='logo'></div>
+                <a href='/'><div class='logo'></div></a>
                      <div class='login'>
                           <span>Do you have account? So, </span>
-                          <button id='login' class='ui basic green button'>Log In</button>
+                         <a href='/login.php'><button id='login' class='ui basic green button'>Log In</button></a>
                       </div>
              </nav>
             ";
