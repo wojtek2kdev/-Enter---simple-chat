@@ -3,8 +3,8 @@
     background-image: url('../assets/enter.png');
 
     position: absolute;
-    margin-left: -30%;
-    margin-top: -15.8%;
+    margin-left: -27rem;
+    margin-top: -14rem;
     
     width: 1100px;
     height: 527px;
@@ -16,16 +16,16 @@
 
 .login{
 
-    margin-left: 90%;
-    margin-top: 17px;
+    margin-left: 72vw;
+    margin-top: 1.2rem;
 
 }
 
 .login span{
 
-    position: absolute;
-    font-size: 25px;
-    margin-left: -20%;
+    display: inline-block;
+
+    font-size: 1.3rem;
     margin-top: 0.5%;
 
 }
