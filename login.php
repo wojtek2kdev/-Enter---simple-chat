@@ -1,6 +1,8 @@
 <?php
 
-    require('./style/theme/login-elements.php');
+require('./style/theme/login-elements.php');
+
+if(isset($_POST['login']))echo('xd');
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +25,8 @@
         <form method="post">
             <input type="text" placeholder="Type your login.." name="login">
             <input type="password" placeholder="Type your password.." name="password">
-            <button>Log in</button>
+            <span style='color: red; font-size: 1.5rem;'><?php ?></span>
+            <button class='ui inverted green button'>Log in</button>
         </form>
     </div>
 </body>
