@@ -2,6 +2,7 @@
 
     include(__DIR__.'/user/register.php');
     include(__DIR__.'/captcha.php');
+    include(__DIR__.'/user/account.php');
     
 
     class Validation{
@@ -104,6 +105,33 @@
                     throw new Exception("Input must includes letter!");
                 }
             }
+        }
+
+    }
+
+    class LoginValidation extends Validation {
+
+        private static $_error_count, $_login, $_password, $_captcha;
+
+        public static function validate($l, $p){
+            self::$_login = parent::normalize($l);
+            self::$_password = parent::normalize($p);
+
+            try{
+                self::_tryLogin();
+            }catch(Exception $e){
+                return $e->getMessage();
+            }
+
+        }
+
+        public static function checkCaptcha($r){
+
+        }
+
+        private static function _tryLogin(){
+            $account = new Account(self::$_login, self::$_password); 
+            $account->login();
         }
 
     }

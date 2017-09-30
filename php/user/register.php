@@ -1,6 +1,6 @@
 <?php
 
-    require('./php/database/dbutils.php');
+    require_once('./php/database/dbutils.php');
 
     class Register{
         

@@ -1,8 +1,13 @@
 <?php
 
-require('./style/theme/login-elements.php');
+    require_once('./style/theme/login-elements.php');
+    require_once('./php/data-validation.php');
+    
+    $error = '';
 
-if(isset($_POST['login']))echo('xd');
+    if(isset($_POST['login'])){
+        $error = LoginValidation::validate($_POST['login'], $_POST['password']);
+    }
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +30,7 @@ if(isset($_POST['login']))echo('xd');
         <form method="post">
             <input type="text" placeholder="Type your login.." name="login">
             <input type="password" placeholder="Type your password.." name="password">
-            <span style='color: red; font-size: 1.5rem;'><?php ?></span>
+            <span style='color: red; font-size: 1.5rem;'><?php echo($error); ?></span>
             <button class='ui inverted green button'>Log in</button>
         </form>
     </div>

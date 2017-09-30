@@ -1,13 +1,29 @@
 <?php
 
-    require('../php/database/dbutils.php');
+    require_once('./php/database/dbutils.php');
 
     class Account{
 
-        public function login($login, $password){
+        private $_login;
+        private $_password;
 
-             
+        private $_error;
 
+        public function __construct($login, $password){
+
+            $this->_error = 'Login or password is incorrect.';
+
+            $this->_login = $login;
+            $this->_password = $password;
+        }
+
+        public function login(){   
+            $result = DbUtils::executeQuery('select password from Users where login="%s"', [$this->_login]);
+            if(!$result->num_rows) throw new Exception($this->_error);
+            else{
+                $pass = mysqli_fetch_assoc($result)['password'];
+                if(!password_verify($this->_password, $pass)) throw new Exception($this->_error);
+            }
         }
 
         public function logout(){
