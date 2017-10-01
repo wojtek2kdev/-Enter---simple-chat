@@ -3,6 +3,13 @@
     include('./php/data-validation.php');
     require('./style/theme/login-elements.php');
 
+    session_start();
+
+    if(isset($_SESSION['active'])){
+        //for testing
+        echo('WELCOME');
+    }
+
     $error = '';
 
     if(isset($_POST['login'])){
