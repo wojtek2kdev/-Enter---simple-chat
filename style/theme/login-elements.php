@@ -8,6 +8,7 @@
         public static function getElement($name){
             switch($name){
                 case 'nav': return self::_getNav(); break;
+                case 'nav-style': return self::_getNavStyles(); break;
                 default: return "Element doesn't exist"; break;
             }  
         }
@@ -15,13 +16,22 @@
         private static function _getNav(){
             return "
              <nav>
-                 <div class='logo'></div>
+                <a href='/'><div class='logo'></div></a>
                      <div class='login'>
                           <span>Do you have account? So, </span>
-                          <button id='login' class='ui basic green button'>Log In</button>
+                         <a href='/login.php'><button id='login' class='ui basic green button'>Log In</button></a>
                       </div>
              </nav>
             ";
+        }
+
+        private static function _getNavStyles(){
+            return '
+                   <link href="style/tags.css" rel="stylesheet">
+                   <link href="style/classes.css" rel="stylesheet">
+                   <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
+                   <link href="style/ids.css" rel="stylesheet">
+            ';
         }
 
     }

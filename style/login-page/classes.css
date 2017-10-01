@@ -1,0 +1,21 @@
+.login-form {
+
+    width: 50rem;
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 12rem;
+
+}
+
+.login-form form input, button, span {
+   
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem !important;
+}
+

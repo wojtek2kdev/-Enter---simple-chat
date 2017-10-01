@@ -1,7 +1,14 @@
 <?php
 
     include('./php/data-validation.php');
-    include('./style/theme/login-elements.php');
+    require('./style/theme/login-elements.php');
+
+    session_start();
+
+    if(isset($_SESSION['active'])){
+        //for testing
+        echo('WELCOME');
+    }
 
     $error = '';
 
