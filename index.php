@@ -6,8 +6,7 @@
     session_start();
 
     if(isset($_SESSION['active'])){
-        //for testing
-        echo('WELCOME');
+        header('Location: /main.php');
     }
 
     $error = '';
@@ -24,10 +23,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link href="style/tags.css" rel="stylesheet">
-        <link href="style/classes.css" rel="stylesheet">
-        <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
-        <link href="style/ids.css" rel="stylesheet">
+        <?php
+            echo(Element::getElement('nav-style'));
+        ?>
         <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
         <script src="scripts/jquery-3.2.1.js"></script>
         <script src='scripts/validation.js'></script>

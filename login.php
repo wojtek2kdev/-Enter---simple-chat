@@ -5,6 +5,12 @@
     
     $error = '';
 
+    session_start();
+
+    if(isset($_SESSION['active'])){
+        header('Location: /main.php');
+    }
+
     if(isset($_POST['login'])){
         $error = LoginValidation::validate($_POST['login'], $_POST['password']);
     }
