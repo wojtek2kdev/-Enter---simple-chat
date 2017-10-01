@@ -8,6 +8,7 @@
         public static function getElement($name){
             switch($name){
                 case 'nav': return self::_getNav(); break;
+                case 'nav-style': return self::_getNavStyles(); break;
                 default: return "Element doesn't exist"; break;
             }  
         }
@@ -22,6 +23,15 @@
                       </div>
              </nav>
             ";
+        }
+
+        private static function _getNavStyles(){
+            return '
+                   <link href="style/tags.css" rel="stylesheet">
+                   <link href="style/classes.css" rel="stylesheet">
+                   <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
+                   <link href="style/ids.css" rel="stylesheet">
+            ';
         }
 
     }

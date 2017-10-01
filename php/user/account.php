@@ -21,20 +21,17 @@
             $result = DbUtils::executeQuery('select * from Users where login="%s"', [$this->_login]);
             if(!$result->num_rows) throw new Exception($this->_error);
             else{
-                $pass = mysqli_fetch_assoc($result)['password'];
-                if(!password_verify($this->_password, $pass)){ 
+                $row = mysqli_fetch_assoc($result);
+                if(!password_verify($this->_password, $row['password'])){ 
                     throw new Exception($this->_error);
                 }else{
                     session_start();
                     $_SESSION['active'] = true;
-                    $_SESSION['nick'] = mysqli_fetch_assoc($result)['nick'];
+                    $_SESSION['nick'] = $row['nick'];
+                    header('Location: /main.php');
                 }
             }
         }
-
-        public function logout(){
-            session_destroy();
-        } 
 
     }
 

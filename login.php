@@ -14,10 +14,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="style/tags.css" rel="stylesheet">
-    <link href="style/classes.css" rel="stylesheet">
-    <link href="style/buttons/UI-Button/button.css" rel="stylesheet">
-    <link href="style/ids.css" rel="stylesheet">
+    <?php
+        echo(Element::getElement('nav-style'));
+    ?>
     <link href="./style/login-page/classes.css" rel="stylesheet">
     <title>Enter - Log in</title>
 </head>
