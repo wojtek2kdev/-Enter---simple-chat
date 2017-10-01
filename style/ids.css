@@ -41,7 +41,7 @@
 
 }
 
-#regform form input, div {
+#regform form input, #regform form div {
 
         display: block;
 

@@ -21,7 +21,8 @@
     <?php
         echo(Element::getElement('nav-style'));
     ?>
-    <title></title>
+    <link href="style/main-page/classes.css" rel="stylesheet">
+    <title>Enter - simple chat</title>
 </head>
 <body>
    <?php
@@ -47,5 +48,12 @@
             document.getElementsByTagName('nav')[0].appendChild(form);
          })();
     </script>
+    <main>
+        <aside>
+            <div class="friends">
+            
+            </div>
+        </aside>
+    </main>
 </body>
 </html>
