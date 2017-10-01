@@ -24,6 +24,11 @@
             if(!!$result->num_rows) throw new Exception("User with this nickname already exist!");
         }
 
+        public function isExistUserWithLogin(){
+            $result = DbUtils::executeQuery('select id from Users where login="%s"', [$this->_login]);
+            if(!!$result->num_rows) throw new Exception("User with this login already exist!");
+        }
+
         public function addUserToDatabase(){
             $result = DbUtils::executeQuery('insert into Users(id,login,password,nick) values(NULL, "%s", "%s", "%s")', [$this->_login, $this->_password, $this->_nick]);
             if($result){

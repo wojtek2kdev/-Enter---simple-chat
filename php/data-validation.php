@@ -46,6 +46,7 @@
 
                 $register = new Register(self::$_login, self::$_nick, self::$_password);
                 $register->isExistUserWithNick();
+                $register->isExistUserWithLogin();
                 $register->addUserToDatabase();
             }catch(Exception $e){
                 return $e->getMessage();

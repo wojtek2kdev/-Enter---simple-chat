@@ -18,7 +18,7 @@
         }
 
         public function login(){   
-            $result = DbUtils::executeQuery('select password from Users where login="%s"', [$this->_login]);
+            $result = DbUtils::executeQuery('select * from Users where login="%s"', [$this->_login]);
             if(!$result->num_rows) throw new Exception($this->_error);
             else{
                 $pass = mysqli_fetch_assoc($result)['password'];
@@ -27,12 +27,13 @@
                 }else{
                     session_start();
                     $_SESSION['active'] = true;
+                    $_SESSION['nick'] = mysqli_fetch_assoc($result)['nick'];
                 }
             }
         }
 
         public function logout(){
-            unset($_SESSION['active']);
+            session_destroy();
         } 
 
     }
