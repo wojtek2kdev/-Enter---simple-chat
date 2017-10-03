@@ -15,7 +15,7 @@
 
         private static function _getNav(){
             return "
-             <nav>
+             <nav class='main'>
                 <a href='/'><div class='logo'></div></a>
                      <div class='login'>
                           <span>Do you have account? So, </span>

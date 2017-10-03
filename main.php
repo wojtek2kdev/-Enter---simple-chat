@@ -22,6 +22,7 @@
         echo(Element::getElement('nav-style'));
     ?>
     <link href="style/main-page/classes.css" rel="stylesheet">
+    <link href="style/container/UI-Container" rel="stylesheet">
     <title>Enter - simple chat</title>
 </head>
 <body>
@@ -51,7 +52,11 @@
     <main>
         <aside>
             <div class="friends">
-            
+                <nav>
+                    
+                </nav>
+                <section id='friends-list'></section>
+                <section id="requests"></section>
             </div>
         </aside>
     </main>
