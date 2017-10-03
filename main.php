@@ -22,7 +22,7 @@
         echo(Element::getElement('nav-style'));
     ?>
     <link href="style/main-page/classes.css" rel="stylesheet">
-    <link href="style/container/UI-Container" rel="stylesheet">
+    <link href="style/menu/UI-Menu/menu.css" rel="stylesheet">
     <title>Enter - simple chat</title>
 </head>
 <body>
@@ -53,7 +53,10 @@
         <aside>
             <div class="friends">
                 <nav>
-                    
+                    <div class="ui two item menu" style='border-radius: 0px;'>
+                        <a class="item">Friends</a>
+                        <a class="item">Search</a>
+                    </div>
                 </nav>
                 <section id='friends-list'></section>
                 <section id="requests"></section>
