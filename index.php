@@ -48,6 +48,13 @@
                         In this project I use these technologies: <br/>
                     </p>
                         <ul>
+                            <li>Front-end:
+                                <ul>
+                                    <li>HTML5</li>
+                                    <li>JavaScript (ES6) + jQuery</li>
+                                    <li>CSS3 + Semantic UI from semantic-ui.com</li>
+                                </ul>
+                            </li>
                             <li> Back-end:
                                 <ul>
                                     <li>Apache</li>
@@ -55,13 +62,7 @@
                                     <li>MySQL</li>
                                 </ul>
                             </li>
-                            <li>Front-end:
-                                <ul>
-                                    <li>HTML5</li>
-                                    <li>JavaScript (ES6) + jQuery</li>
-                                    <li>CSS3</li>
-                                </ul>
-                            </li>
+                            
                         </ul>
                         <p>
                         Click here to see my GitHub:

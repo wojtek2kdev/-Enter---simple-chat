@@ -23,6 +23,8 @@
     ?>
     <link href="style/main-page/classes.css" rel="stylesheet">
     <link href="style/menu/UI-Menu/menu.css" rel="stylesheet">
+    <link href="style/inputs/UI-Input/input.css" rel="stylesheet">
+    <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
     <title>Enter - simple chat</title>
 </head>
 <body>
@@ -53,11 +55,15 @@
         <aside>
             <div class="friends">
                 <nav>
-                    <div class="ui two item menu" style='border-radius: 0px;'>
-                        <a class="item">Friends</a>
+                    <div class="ui two item menu" style='border-radius: 0px; margin: 0rem;'>
+                        <a class="active item">Friends</a>
                         <a class="item">Search</a>
                     </div>
-                </nav>
+                    <div class="ui transparent icon input" style='width: 100%; height: 2rem;'>
+                      <input placeholder="Find friend from list..." type="text" style='padding-left: 1em !important;'>
+                      <i class="search icon"></i>
+                    </div>
+               </nav>
                 <section id='friends-list'></section>
                 <section id="requests"></section>
             </div>
