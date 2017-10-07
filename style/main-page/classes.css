@@ -79,6 +79,12 @@
 
 }
 
+.list > ul > li:hover {
+
+    background-color: rgba(0, 179, 223, 0.1);
+
+}
+
 .list > ul > li > span {
 
     position: absolute;
@@ -88,6 +94,8 @@
     font-size: 1.4rem;
 
     margin-left: 2rem;
+
+    cursor: default;
 
 }
 
@@ -124,5 +132,11 @@
 .list > ul > li > i.remove_friend:hover {
 
     color: red;
+
+}
+
+.list > ul > li > i.message:hover {
+
+    color: green;
 
 }
