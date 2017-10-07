@@ -1,10 +1,9 @@
 .friends {
 
-    display: block;
+    display: flex;
     
-    border: 1rem;
     width: 20rem;
-    height: 100%;
+    height: calc(100% - 5rem);
 
     margin-top: 5rem;
 
@@ -12,6 +11,32 @@
 
     left: 0%;
     top: 0%;
+
+    flex-flow: column;
+
+}
+
+.search {
+
+    font-size: 1rem;
+
+}
+
+#friends-list {
+
+    flex: 1 1 auto;
+
+}
+
+#search-type {
+
+    flex: 0 1 auto;
+
+}
+
+#requests {
+
+    flex: 0 1 3rem;
 
 }
 
