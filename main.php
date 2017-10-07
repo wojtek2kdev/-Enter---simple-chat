@@ -72,11 +72,24 @@
                     </div>
                </nav>
                 <section id='friends-list'>
-                    <div class="list"></div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <span>Test_user</span>
+                                <i class="comment icon message"></i>
+                                <i class="ban icon remove_friend"></i>
+                            </li>
+                            <li>
+                                <span>Test_user_long</span>
+                                <i class="comment icon message"></i>
+                                <i class="ban icon remove_friend"></i>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
                 <section id="requests">
                     <div class="list requests">
-                        <i class="add user icon" id='user-request'></i>
+                        <div style='width: 3rem; height: 3rem; border-right: 1px solid #DDDDDD;'><i class="add user icon" id='user-request'></i></div>
                     </div>
                 </section>
             </div>
