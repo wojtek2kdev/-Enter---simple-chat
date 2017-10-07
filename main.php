@@ -26,6 +26,8 @@
     <link href="style/inputs/UI-Input/input.css" rel="stylesheet">
     <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
 
+    <script src="./scripts/friends-list.js" type="text/javascript"></script>
+
     <style type="text/css">
         section {
            float: unset; 
