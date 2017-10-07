@@ -61,12 +61,12 @@
     <main>
         <aside>
             <div class="friends">
-                <nav>
-                    <div class="ui two item menu" style='border-radius: 0px; margin: 0rem;'>
+                <nav id='search-type'>
+                    <div class="ui two item menu" style='border-radius: 0px; margin: 0rem; border: none; border-bottom: 1px solid #DDDDDD;'>
                         <a class="active item">Friends</a>
                         <a class="item">Search</a>
                     </div>
-                    <div class="ui transparent icon input" style='width: 100%; height: 2rem; border: 1px solid #DDDDDD'>
+                    <div class="ui transparent icon input" style='width: 100%; height: 2rem; border-bottom: 1px solid #DDDDDD'>
                       <input placeholder="Find friend from list..." type="text" class='search' style='padding-left: 1rem !important;'>
                       <i class="search icon"></i>
                     </div>
@@ -76,7 +76,7 @@
                 </section>
                 <section id="requests">
                     <div class="list requests">
-                    
+                        <i class="add user icon" id='user-request'></i>
                     </div>
                 </section>
             </div>

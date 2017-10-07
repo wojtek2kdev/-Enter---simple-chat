@@ -14,6 +14,8 @@
 
     flex-flow: column;
 
+    border: 1px solid #DDDDDD;
+
 }
 
 .search {
@@ -25,6 +27,7 @@
 #friends-list {
 
     flex: 1 1 auto;
+    border-bottom: 1px solid #DDDDDD;
 
 }
 
@@ -37,6 +40,15 @@
 #requests {
 
     flex: 0 1 3rem;
+
+}
+
+#user-request {
+
+    font-size: 2rem;
+
+    padding-left: 0.5rem;
+    padding-top: 0.3rem;
 
 }
 
