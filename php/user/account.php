@@ -33,6 +33,19 @@
             }
         }
 
+        public static function getFriends(){
+            $result = DbUtils::executeQuery('select user2 from Friends where user1="%s";', [$_SESSION['nick']]);
+            $result2 = DbUtils::executeQuery('select user1 from Friends where user2="%s";', [$_SESSION['nick']]);
+            $arr = mysqli_fetch_all($result);
+            $arr2 = mysqli_fetch_all($result2);
+            foreach($arr as $i){
+                yield $i;
+            }
+            foreach($arr2 as $i){
+                yield $i;
+            }
+    }
+
     }
 
 ?>

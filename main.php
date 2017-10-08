@@ -1,7 +1,8 @@
 <?php
     
     require_once('./style/theme/login-elements.php');
-    
+    require_once('./php/user/account.php');
+
     session_start();
 
     if(!isset($_SESSION['active'])){
@@ -88,7 +89,7 @@
                             </li>
                         </ul>
                         <script type="text/javascript">
-                            FriendsList.init(<?php echo(json_encode(['test1','test2','test3','test4','test5','test6','test7','test8','test9','test10','test11']));?>); 
+                            FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>); 
                         </script>
                     </div>
                 </section>
