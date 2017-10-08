@@ -2,6 +2,10 @@ const FriendsList = (function(){
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
         if(result) friend.remove();
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'main.php', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send('friend=' + friend.innerText);
         // in future, xhr remove from database.
     };
 

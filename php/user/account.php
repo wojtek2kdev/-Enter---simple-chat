@@ -44,7 +44,11 @@
             foreach($arr2 as $i){
                 yield $i;
             }
-    }
+        }
+
+        public static function removeFriend($friend){
+            DbUtils::executeQuery('delete from Friends where (user1="%s" and user2="%s") or (user1="%s" and user2="%s")', [$_SESSION['nick'], $friend, $friend, $_SESSION['nick']]);
+        }
 
     }
 

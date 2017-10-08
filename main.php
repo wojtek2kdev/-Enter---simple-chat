@@ -14,6 +14,10 @@
        header('Location: /login.php');
     }
 
+    if(isset($_POST['friend'])){
+        Account::removeFriend($_POST['friend']);
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,16 +81,6 @@
                 <section id='friends-list'>
                     <div class="list">
                         <ul id='items'>
-                            <li>
-                                <span>Test_user</span>
-                                <i class="comment icon message"></i>
-                                <i class="ban icon remove_friend"></i>
-                            </li>
-                            <li>
-                                <span>Test_user_long</span>
-                                <i class="comment icon message"></i>
-                                <i class="ban icon remove_friend"></i>
-                            </li>
                         </ul>
                         <script type="text/javascript">
                             FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>); 
