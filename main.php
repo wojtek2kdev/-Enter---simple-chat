@@ -87,6 +87,9 @@
                                 <i class="ban icon remove_friend"></i>
                             </li>
                         </ul>
+                        <script type="text/javascript">
+                            FriendsList.init(<?php echo(json_encode(['test1','test2']));?>); 
+                        </script>
                     </div>
                 </section>
                 <section id="requests">
