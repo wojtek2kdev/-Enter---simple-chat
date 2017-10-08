@@ -69,13 +69,13 @@
                         <a class="item">Search</a>
                     </div>
                     <div class="ui transparent icon input" style='width: 100%; height: 2rem; border-bottom: 1px solid #DDDDDD'>
-                      <input placeholder="Find friend from list..." type="text" class='search' style='padding-left: 1rem !important;'>
+                      <input id='search' placeholder="Find friend from list..." type="text" class='search' style='padding-left: 1rem !important;'>
                       <i class="search icon"></i>
                     </div>
                </nav>
                 <section id='friends-list'>
                     <div class="list">
-                        <ul>
+                        <ul id='items'>
                             <li>
                                 <span>Test_user</span>
                                 <i class="comment icon message"></i>
