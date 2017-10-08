@@ -26,9 +26,9 @@ const FriendsList = (function(){
                  remove_icon.setAttribute('class', 'ban icon remove_friend');
                  let nickname = document.createElement('span');
                  nickname.innerText = nick;
+            item.appendChild(nickname);
             item.appendChild(message_icon)
             item.appendChild(remove_icon);
-            item.appendChild(nickname);
             list.appendChild(item);
         }
     }

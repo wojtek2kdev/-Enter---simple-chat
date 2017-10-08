@@ -88,7 +88,7 @@
                             </li>
                         </ul>
                         <script type="text/javascript">
-                            FriendsList.init(<?php echo(json_encode(['test1','test2']));?>); 
+                            FriendsList.init(<?php echo(json_encode(['test1','test2','test3','test4','test5','test6','test7','test8','test9','test10','test11']));?>); 
                         </script>
                     </div>
                 </section>
