@@ -1,7 +1,7 @@
 .friends {
 
     display: flex;
-    
+
     width: 25rem;
     height: calc(100% - 5rem);
 
@@ -59,6 +59,8 @@
     padding-left: 0.5rem;
     padding-top: 0.3rem;
 
+    cursor: default;
+
 }
 
 .list > ul {
@@ -69,7 +71,7 @@
 
 .list > ul > li {
 
-    list-style-type: none;  
+    list-style-type: none;
 
     height: 2rem;
 

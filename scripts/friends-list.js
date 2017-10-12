@@ -1,12 +1,17 @@
 const FriendsList = (function(){
+
+    const xhr = new XMLHttpRequest();
+
+    const _xhrsend = function(data, file="main.php", type="POST"){
+      xhr.open(type, file, true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send(data);
+    };
+
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
         if(result) friend.remove();
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'main.php', true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send('friend=' + friend.innerText);
-        // in future, xhr remove from database.
+        _xhrsend('friend=' + friend.innerText);
     };
 
     const _searchFriend = function(target){
@@ -18,7 +23,21 @@ const FriendsList = (function(){
                     i.style = '';
                 }
             }
-    }
+    };
+
+    const _switchSearch = function(item){
+      let searchBarTypes = $('.ui.two.item.menu');
+        for(let i of searchBarTypes.children()){
+          i.className = 'item';
+        }
+        item.className = 'active item';
+        item == searchBarTypes.children()[0] ? $('#search').attr('placeholder','Find friend from list...')
+        : $('#search').attr('placeholder','Find user in Enter...');
+    };
+
+    const _searchUser = function(target){
+
+    };
 
     const _generateList = function(friends_list){
         const list = document.getElementById('items');
@@ -35,18 +54,21 @@ const FriendsList = (function(){
             item.appendChild(remove_icon);
             list.appendChild(item);
         }
-    }
+    };
 
     const _init = function(friends_list){
         _generateList(friends_list);
-        for(let i of document.getElementsByClassName('ban icon remove_friend')){
+        for(let i of $('.ban.icon.remove_friend')){
             i.addEventListener('click', e => _removeFriend(e.target.parentElement));
+        }
+        for(let i of $('.ui.two.item.menu').children()){
+          i.addEventListener('click', e => _switchSearch(e.target));
         }
         document.getElementById('search').addEventListener('input', e => _searchFriend(e.target.value));
     };
 
     return {
-        
+
         init : _init
 
     };

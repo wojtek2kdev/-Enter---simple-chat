@@ -1,5 +1,5 @@
 <?php
-    
+
     require_once('./style/theme/login-elements.php');
     require_once('./php/user/account.php');
 
@@ -10,7 +10,7 @@
     }
 
     if(isset($_POST['logout'])){
-       session_destroy(); 
+       session_destroy();
        header('Location: /login.php');
     }
 
@@ -31,11 +31,12 @@
     <link href="style/inputs/UI-Input/input.css" rel="stylesheet">
     <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./scripts/friends-list.js" type="text/javascript"></script>
 
     <style type="text/css">
         section {
-           float: unset; 
+           float: unset;
         }
     </style>
 
@@ -83,7 +84,7 @@
                         <ul id='items'>
                         </ul>
                         <script type="text/javascript">
-                            FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>); 
+                            FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>);
                         </script>
                     </div>
                 </section>
