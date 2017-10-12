@@ -25,6 +25,10 @@ const FriendsList = (function(){
             }
     };
 
+    const _search = function(target){
+        $('.ui.two.item.menu').children()[0].className == 'active item' ? _searchFriend(target) : _searchUser(target);
+    }
+
     const _switchSearch = function(item){
       let searchBarTypes = $('.ui.two.item.menu');
         for(let i of searchBarTypes.children()){
@@ -41,7 +45,7 @@ const FriendsList = (function(){
     };
 
     const _searchUser = function(target){
-
+        console.log('searching user.. (test)')
     };
 
     const _generateList = function(friends_list){
@@ -70,7 +74,7 @@ const FriendsList = (function(){
         for(let i of $('.ui.two.item.menu').children()){
           i.addEventListener('click', e => _switchSearch(e.target));
         }
-        document.getElementById('search').addEventListener('input', e => _searchFriend(e.target.value));
+        document.getElementById('search').addEventListener('input', e => _search(e.target.value));
     };
 
     return {
