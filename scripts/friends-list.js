@@ -31,8 +31,13 @@ const FriendsList = (function(){
           i.className = 'item';
         }
         item.className = 'active item';
-        item == searchBarTypes.children()[0] ? $('#search').attr('placeholder','Find friend from list...')
-        : $('#search').attr('placeholder','Find user in Enter...');
+        if(item == searchBarTypes.children()[0]){
+          $('#search').attr('placeholder','Find friend from list...');
+          $('li[aria=friend]').show();
+        }else{
+          $('#search').attr('placeholder','Find user in Enter...');
+          $('li[aria=friend]').hide();
+        }
     };
 
     const _searchUser = function(target){
@@ -49,6 +54,7 @@ const FriendsList = (function(){
                  remove_icon.setAttribute('class', 'ban icon remove_friend');
                  let nickname = document.createElement('span');
                  nickname.innerText = nick;
+            item.setAttribute('aria', 'friend');
             item.appendChild(nickname);
             item.appendChild(message_icon)
             item.appendChild(remove_icon);
