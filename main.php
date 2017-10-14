@@ -74,8 +74,8 @@
                         <a class="active item">Friends</a>
                         <a class="item">Search</a>
                     </div>
-                    <div class="ui transparent icon input" style='width: 100%; height: 2rem; border-bottom: 1px solid #DDDDDD'>
-                      <input id='search' placeholder="Find friend from list..." type="text" class='search' style='padding-left: 1rem !important;'>
+                    <div id='search_bar' class="ui transparent icon input" style='width: 100%; height: 2rem; border-bottom: 1px solid #DDDDDD'>
+                      <input id='search_friend' placeholder="Find friend from list..." type="text" class='search' style='padding-left: 1rem !important;'>
                       <i class="search icon"></i>
                     </div>
                </nav>

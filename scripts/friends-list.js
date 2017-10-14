@@ -15,7 +15,7 @@ const FriendsList = (function(){
     };
 
     const _searchFriend = function(target){
-            const friendsList = document.getElementById('items').children;
+            const friendsList = $('#items').children();
             for(let i of friendsList){
                 if(target.toUpperCase() != i.children[0].innerText.slice(0, target.length).toUpperCase()){
                     i.style = 'display: none;';
@@ -25,8 +25,8 @@ const FriendsList = (function(){
             }
     };
 
-    const _search = function(target){
-        $('.ui.two.item.menu').children()[0].className == 'active item' ? _searchFriend(target) : _searchUser(target);
+    const _search = function(target, key){
+        $('#search_bar').children()[0].id == 'search_friend' ? _searchFriend(target) : (() => {if(key==13)_searchUser(target)})();
     }
 
     const _switchSearch = function(item){
@@ -36,10 +36,12 @@ const FriendsList = (function(){
         }
         item.className = 'active item';
         if(item == searchBarTypes.children()[0]){
-          $('#search').attr('placeholder','Find friend from list...');
+          $('#search_bar').children()[0].id = 'search_friend';
+          $('#search_friend').attr('placeholder','Find friend from list...');
           $('li[aria=friend]').show();
         }else{
-          $('#search').attr('placeholder','Find user in Enter...');
+          $('#search_bar').children()[0].id = 'search_user';
+          $('#search_user').attr('placeholder','Find user in Enter... (press enter to search)');
           $('li[aria=friend]').hide();
         }
     };
@@ -74,7 +76,8 @@ const FriendsList = (function(){
         for(let i of $('.ui.two.item.menu').children()){
           i.addEventListener('click', e => _switchSearch(e.target));
         }
-        document.getElementById('search').addEventListener('input', e => _search(e.target.value));
+        //document.getElementById('search_friend').addEventListener('keypress', e => _search(e.target.value, e.which));
+        document.getElementById('search_friend').addEventListener('keyup', e => _search(e.target.value, e.which));
     };
 
     return {
