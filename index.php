@@ -1,7 +1,7 @@
 <?php
 
-    include('./php/data-validation.php');
-    require('./style/theme/login-elements.php');
+    require_once(__DIR__.'/php/data-validation.php');
+    require_once(__DIR__.'/style/theme/login-elements.php');
 
     session_start();
 
@@ -12,9 +12,9 @@
     $error = '';
 
     if(isset($_POST['login'])){
-        
-        $error =  RegisterValidation::validate($_POST['nick'], $_POST['login'], 
-            $_POST['password'], $_POST['confirm'], $_POST['g-recaptcha-response']); 
+
+        $error =  RegisterValidation::validate($_POST['nick'], $_POST['login'],
+            $_POST['password'], $_POST['confirm'], $_POST['g-recaptcha-response']);
 
     }
 
@@ -33,7 +33,7 @@
         <title>Enter - simple chat</title>
     </head>
     <body>
-        <?php echo(Element::getElement('nav')); ?> 
+        <?php echo(Element::getElement('nav')); ?>
         <main>
             <section id='about'>
              <article>
@@ -62,7 +62,7 @@
                                     <li>MySQL</li>
                                 </ul>
                             </li>
-                            
+
                         </ul>
                         <p>
                         Click here to see my GitHub:
@@ -79,7 +79,7 @@
                     <h1>Register</h1>
                 </header>
                 <div id="regform">
-                   <form method="post"> 
+                   <form method="post">
                     <input type="text" placeholder='Login..'  name="login">
                     <input type="text" placeholder='Nickname.. (without spaces)' name="nick" maxlength='20'>
                     <input type="password" placeholder='Password.. (min 8 letters)'  name="password">
@@ -88,12 +88,12 @@
                     <i id='pass_err' class="error warning circle icon" title="Passwords aren't same."></i>
                     <script>$('#pass_err').hide();</script>
                     </div>
-                   <div class="g-recaptcha" data-sitekey="6LeRzTEUAAAAABAZRLh3DdjeX8aol7Lvm9mJEcRl" name></div> 
+                   <div class="g-recaptcha" data-sitekey="6LeRzTEUAAAAABAZRLh3DdjeX8aol7Lvm9mJEcRl" name></div>
                    <div id="errorlog">
                         <span>
-                            <?php 
+                            <?php
                                 echo($error);
-                            ?> 
+                            ?>
                         </span>
                     </div>
                          <input id='submit' type="submit" style='margin-top: 7%;' class="ui inverted green button" value="Create account" name="">

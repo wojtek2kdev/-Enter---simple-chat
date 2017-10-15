@@ -1,7 +1,7 @@
 <?php
 
-    require_once('./style/theme/login-elements.php');
-    require_once('./php/user/account.php');
+    require_once(__DIR__.'/style/theme/login-elements.php');
+    require_once(__DIR__.'/php/user/account.php');
 
     session_start();
 

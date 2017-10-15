@@ -1,9 +1,9 @@
 <?php
 
-    include(__DIR__.'/user/register.php');
-    include(__DIR__.'/captcha.php');
-    include(__DIR__.'/user/account.php');
-    
+    require_once(__DIR__.'/user/register.php'); //
+    require_once(__DIR__.'/captcha.php');
+    require_once(__DIR__.'/user/account.php'); //
+
 
     class Validation{
 
@@ -87,7 +87,7 @@
         private static function _arePasswordsSame($p, $c){
             if($p != $c){
                 throw new Exception("Passwords aren't same!");
-            } 
+            }
         }
 
         private static function _isPasswordStrong($p){
@@ -131,7 +131,7 @@
         }
 
         private static function _tryLogin(){
-            $account = new Account(self::$_login, self::$_password); 
+            $account = new Account(self::$_login, self::$_password);
             $account->login();
         }
 

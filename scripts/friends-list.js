@@ -1,5 +1,7 @@
 const FriendsList = (function(){
 
+    const _Users = [];
+
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
         if(result) friend.remove();
@@ -49,10 +51,9 @@ const FriendsList = (function(){
           type: "POST",
           url: "./php/search_user.php",
           data: 'user=' + target,
-          cache: false,
-          success: function(data){
-             console.log(data);
-          }
+          cache: false
+        }).done(function(data){
+           console.log(data);
         });
     };
 

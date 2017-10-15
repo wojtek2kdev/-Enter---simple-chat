@@ -1,13 +1,13 @@
 <?php
 
-    require_once('./php/database/dbutils.php');
+    require_once(__DIR__.'/../database/dbutils.php');
 
     class Register{
-        
+
         private $_login;
         private $_nick;
         private $_password;
-    
+
         public function __construct($l, $n, $p){
             $this->_login = $l;
             $this->_nick = $n;

@@ -1,6 +1,6 @@
 <?php
 
-    require_once('./php/database/dbutils.php');
+    require_once(__DIR__.'/../database/dbutils.php');
 
     class Account{
 
@@ -17,12 +17,12 @@
             $this->_password = $password;
         }
 
-        public function login(){   
+        public function login(){
             $result = DbUtils::executeQuery('select * from Users where login="%s"', [$this->_login]);
             if(!$result->num_rows) throw new Exception($this->_error);
             else{
                 $row = mysqli_fetch_assoc($result);
-                if(!password_verify($this->_password, $row['password'])){ 
+                if(!password_verify($this->_password, $row['password'])){
                     throw new Exception($this->_error);
                 }else{
                     session_start();
@@ -44,6 +44,14 @@
             foreach($arr2 as $i){
                 yield $i;
             }
+        }
+
+        public static function searUser($user){
+          $result = DbUtils::executeQuery('select nick from Users where nick="%s"', [$user]);
+          $arr = mysqli_fetch_all($result);
+          foreach($arr as $i){
+            yield $i;
+          }
         }
 
         public static function removeFriend($friend){
