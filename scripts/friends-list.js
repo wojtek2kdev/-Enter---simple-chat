@@ -1,17 +1,14 @@
 const FriendsList = (function(){
 
-    const xhr = new XMLHttpRequest();
-
-    const _xhrsend = function(data, file="main.php", type="POST"){
-      xhr.open(type, file, true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.send(data);
-    };
-
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
         if(result) friend.remove();
-        _xhrsend('friend=' + friend.innerText);
+        $.ajax({
+          type: "POST",
+          url: "main.php",
+          data: 'friend=' + friend.innerText,
+          cache: false,
+        });
     };
 
     const _searchFriend = function(target){
@@ -47,7 +44,16 @@ const FriendsList = (function(){
     };
 
     const _searchUser = function(target){
-        console.log('searching user.. (test)')
+        console.log(`searching user.. (${target})`);
+        $.ajax({
+          type: "POST",
+          url: "./php/search_user.php",
+          data: 'user=' + target,
+          cache: false,
+          success: function(data){
+             console.log(data);
+          }
+        });
     };
 
     const _generateList = function(friends_list){
