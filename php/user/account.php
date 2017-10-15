@@ -46,8 +46,8 @@
             }
         }
 
-        public static function searUser($user){
-          $result = DbUtils::executeQuery('select nick from Users where nick="%s"', [$user]);
+        public static function searchUser($user){
+          $result = DbUtils::executeQuery('select nick from Users where nick like "%s%%"', [$user]);
           $arr = mysqli_fetch_all($result);
           foreach($arr as $i){
             yield $i;
