@@ -81,12 +81,12 @@
                </nav>
                 <section id='friends-list'>
                     <div class="list">
-                        <ul id='items'>
-                        </ul>
-                        <script type="text/javascript">
-                            FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>);
-                        </script>
+                        <ul id='items'></ul>
                     </div>
+                    <div id='see_more'><span>See more...</span></div>
+                    <script type="text/javascript">
+                        FriendsList.init(<?php echo(json_encode(iterator_to_array(Account::getFriends())));?>);
+                    </script>
                 </section>
                 <section id="requests">
                     <div class="list requests">

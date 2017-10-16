@@ -4,17 +4,19 @@ const FriendsList = (function(){
 
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
-        if(result) friend.remove();
+        if(result){
+        friend.remove();
         $.ajax({
           type: "POST",
           url: "main.php",
           data: 'friend=' + friend.innerText,
           cache: false,
         });
+      }
     };
 
     const _searchFriend = function(target){
-            const friendsList = $('#items>li>span');
+            const friendsList = $('#items>li');
             for(let i of friendsList){
                 if(target.toUpperCase() != i.innerText.slice(0, target.length).toUpperCase()){
                     i.style = 'display: none;';
@@ -64,15 +66,7 @@ const FriendsList = (function(){
 
     const _generateUsersList = function(){
         $('#items>li[aria=user]').remove();
-        for(let user of _Users){
-          $('#items').append(
-            $('<li></li>').append(
-              $('<i></i>').attr('class', 'add user icon message'),
-              $('<span></span>').text(user)
-            ).attr('aria', 'user')
-          );
-        }
-        _Users.length = 0;
+        _seeMoreUsers();
     };
 
     const _generateFriendsList = function(friends_list){
@@ -87,16 +81,30 @@ const FriendsList = (function(){
         }
     };
 
+    const _seeMoreUsers = function(){
+              let users;
+              _Users.length >= 10 ? users = _Users.splice(0,10) : users = _Users;
+              for(let user of users){
+                $('#items').append(
+                  $('<li></li>').append(
+                    $('<i></i>').attr('class', 'add user icon message'),
+                    $('<span></span>').text(user)
+                  ).attr('aria', 'user')
+                );
+              }
+
+              _Users.length < 10 ? $('#see_more').hide() : $('#see_more').show();
+    };
+
     const _init = function(friends_list){
         _generateFriendsList(friends_list);
-        for(let i of $('.ban.icon.remove_friend')){
-            i.addEventListener('click', e => _removeFriend(e.target.parentElement));
-        }
-        for(let i of $('.ui.two.item.menu').children()){
-          i.addEventListener('click', e => _switchSearch(e.target));
-        }
-        //document.getElementById('search_friend').addEventListener('keypress', e => _search(e.target.value, e.which));
-        document.getElementById('search_friend').addEventListener('keyup', e => _search(e.target.value, e.which));
+        $('#see_more').hide();
+        //Listeners
+        $('.ban.icon.remove_friend').on('click', e => _removeFriend(e.target.parentElement));
+        $('.ui.two.item.menu').children().on('click', e => _switchSearch(e.target));
+        $('#search_friend').on('keyup', e => _search(e.target.value, e.which));
+        $('#see_more').on('click', _seeMoreUsers);
+
     };
 
     return {
