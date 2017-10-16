@@ -58,20 +58,14 @@ const FriendsList = (function(){
     };
 
     const _generateList = function(friends_list){
-        const list = document.getElementById('items');
         for(let nick of friends_list){
-            let item = document.createElement('li');
-                 let message_icon = document.createElement('i');
-                 message_icon.setAttribute('class', 'comment icon message');
-                 let remove_icon = document.createElement('i');
-                 remove_icon.setAttribute('class', 'ban icon remove_friend');
-                 let nickname = document.createElement('span');
-                 nickname.innerText = nick;
-            item.setAttribute('aria', 'friend');
-            item.appendChild(nickname);
-            item.appendChild(message_icon)
-            item.appendChild(remove_icon);
-            list.appendChild(item);
+            $('#items').append(
+              $('<li></li>').append(
+                $('<i></i>').attr('class', 'comment icon message'),
+                $('<i></i>').attr('class', 'ban icon remove_friend'),
+                $('<span></span>').text(nick)
+              ).attr('aria', 'friend')
+            );
         }
     };
 
