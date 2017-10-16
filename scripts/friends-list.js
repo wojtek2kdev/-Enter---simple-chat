@@ -14,9 +14,9 @@ const FriendsList = (function(){
     };
 
     const _searchFriend = function(target){
-            const friendsList = $('#items').children();
+            const friendsList = $('#items>li>span');
             for(let i of friendsList){
-                if(target.toUpperCase() != i.children[0].innerText.slice(0, target.length).toUpperCase()){
+                if(target.toUpperCase() != i.innerText.slice(0, target.length).toUpperCase()){
                     i.style = 'display: none;';
                 }else{
                     i.style = '';
@@ -35,6 +35,7 @@ const FriendsList = (function(){
         }
         item.className = 'active item';
         if(item == searchBarTypes.children()[0]){
+          $('#items>li[aria=user]').remove();
           $('#search_bar').children()[0].id = 'search_friend';
           $('#search_friend').attr('placeholder','Find friend from list...');
           $('li[aria=friend]').show();
@@ -53,11 +54,28 @@ const FriendsList = (function(){
           data: 'user=' + target,
           cache: false
         }).done(function(data){
-           console.log(data);
+           for(let i of JSON.parse(data)){
+             _Users.push(i[0]);
+           }
+           _generateUsersList();
+           console.log(_Users);
         });
     };
 
-    const _generateList = function(friends_list){
+    const _generateUsersList = function(){
+        $('#items>li[aria=user]').remove();
+        for(let user of _Users){
+          $('#items').append(
+            $('<li></li>').append(
+              $('<i></i>').attr('class', 'add user icon message'),
+              $('<span></span>').text(user)
+            ).attr('aria', 'user')
+          );
+        }
+        _Users.length = 0;
+    };
+
+    const _generateFriendsList = function(friends_list){
         for(let nick of friends_list){
             $('#items').append(
               $('<li></li>').append(
@@ -70,7 +88,7 @@ const FriendsList = (function(){
     };
 
     const _init = function(friends_list){
-        _generateList(friends_list);
+        _generateFriendsList(friends_list);
         for(let i of $('.ban.icon.remove_friend')){
             i.addEventListener('click', e => _removeFriend(e.target.parentElement));
         }
