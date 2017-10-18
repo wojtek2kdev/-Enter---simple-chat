@@ -49,6 +49,7 @@ const FriendsList = (function(){
     };
 
     const _searchUser = function(target){
+      _Users.length = 0;
         console.log(`searching user.. (${target})`);
         $.ajax({
           type: "POST",
@@ -83,7 +84,8 @@ const FriendsList = (function(){
 
     const _seeMoreUsers = function(){
               let users;
-              _Users.length >= 10 ? users = _Users.splice(0,10) : users = _Users;
+              const maxUsers = 10;
+              _Users.length >= maxUsers ? users = _Users.splice(0,maxUsers) : users = _Users;
               for(let user of users){
                 $('#items').append(
                   $('<li></li>').append(
@@ -93,7 +95,7 @@ const FriendsList = (function(){
                 );
               }
 
-              _Users.length < 10 ? $('#see_more').hide() : $('#see_more').show();
+              _Users.length < maxUsers ? (()=>{$('#see_more').hide(); _Users.length = 0;})() : $('#see_more').show();
     };
 
     const _init = function(friends_list){
