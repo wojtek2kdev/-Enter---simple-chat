@@ -59,8 +59,23 @@
         }
 
         public static function addRequest($user){
-            $result = DbUtils::executeQuery('select id from Users where nick="%s"', [$user]);
-            if(!$result->num_rows){
+            if($user == $_SESSION['nick']){
+              echo(json_encode('You are trying to send request to yourself'));
+              return;
+            }
+            $is_friend = DbUtils::executeQuery('select id from Friends where (user1="%s" and user2="%s") or (user1="%s" and user2="%s");',
+            [$_SESSION['nick'], $user, $user, $_SESSION['nick']]);
+            if($is_friend->num_rows){
+              echo(json_encode('You are trying send request to your actually friend'));
+              return;
+            }
+            $was_sended = DbUtils::executeQuery('select id from Requests where user1="%s" and user2="%s"', [$_SESSION['nick'], $user]);
+            if($was_sended->num_rows){
+              echo(json_encode('You has been sended request to this user'));
+              return;
+            }
+            $exist = DbUtils::executeQuery('select id from Users where nick="%s"', [$user]);
+            if(!$exist->num_rows){
               echo(json_encode("User '".$user."' does not exist."));
               return;
             }
