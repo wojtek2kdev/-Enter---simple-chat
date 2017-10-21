@@ -12,9 +12,7 @@
     if(isset($_POST['logout'])){
        session_destroy();
        header('Location: /login.php');
-    }
-
-    if(isset($_POST['friend'])){
+    }else if(isset($_POST['friend'])){
         Account::removeFriend($_POST['friend']);
     }
 
@@ -98,11 +96,3 @@
     </main>
 </body>
 </html>
-
-<?php
-
-if(isset($_POST['user'])){
-  echo(json_encode("xd"));
-}
-
- ?>

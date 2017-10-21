@@ -4,7 +4,7 @@
 
     session_start();
 
-    if(isset($_POST['user']) && isset($_SESSION['nick'])){
+    if(isset($_POST['user']) && isset($_SESSION['active'])){
         if(strlen($_POST['user'])){
           $arr = iterator_to_array(Account::searchUser($_POST['user']));
           $i = array_search([$_SESSION['nick']], $arr);

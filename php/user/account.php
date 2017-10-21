@@ -58,6 +58,56 @@
             DbUtils::executeQuery('delete from Friends where (user1="%s" and user2="%s") or (user1="%s" and user2="%s")', [$_SESSION['nick'], $friend, $friend, $_SESSION['nick']]);
         }
 
+        public static function addRequest($user){
+            $result = DbUtils::executeQuery('select id from Users where nick="%s"', [$user]);
+            if(!$result->num_rows){
+              echo(json_encode("User '".$user."' does not exist."));
+              return;
+            }
+            DbUtils::executeQuery('insert into Requests(id, user1, user2) values(null, "%s", "%s");', [$_SESSION['nick'], $user]);
+        }
+
+        public static function acceptRequest($user){
+          try{
+            self::_removeOtherRequest($user);
+          }catch(Exception $e){
+            echo(json_encode($e->getMessage()));
+            return;
+          }
+            DbUtils::executeQuery('insert into Friends(id, user1, user2) values(null, "%s", "%s");',[$_SESSION['nick'], $user]);
+        }
+
+        public static function discardRequest($user){
+          try{
+            self::_removeOtherRequest($user);
+          }catch(Exception $e){
+            echo(json_encode($e->getMessage()));
+            return;
+          }
+        }
+
+        public static function getMyRequests(){
+          $result = DbUtils::executeQuery('select user2 from Requests where user1="%s";', [$_SESSION['nick']]);
+          $arr = mysqli_fetch_all($result);
+          foreach($arr as $i){
+              yield $i;
+          }
+        }
+
+        public static function getOtherRequests(){
+          $result = DbUtils::executeQuery('select user1 from Requests where user2="%s";', [$_SESSION['nick']]);
+          $arr = mysqli_fetch_all($result);
+          foreach($arr as $i){
+              yield $i;
+          }
+        }
+
+        private static function _removeOtherRequest($user){
+             $result = DbUtils::executeQuery('select id from Requests where user1="%s" and user2="%s"', [$user, $_SESSION['nick']]);
+             if(!$result->num_rows) throw new Exception("Request does not exist.");
+             else DbUtils::executeQuery('delete from Requests where user1="%s" and user2="%s"', [$user,$_SESSION['nick']]);
+        }
+
     }
 
 ?>
