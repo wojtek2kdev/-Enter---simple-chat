@@ -13,6 +13,10 @@
             $f = array_search($friend, $arr);
             if($f !== false) array_splice($arr, $f, 1);
           }
+          foreach (iterator_to_array(Account::getMyRequests()) as $user) {
+            $u = array_search($user, $arr);
+            if($u !== false) array_splice($arr, $u, 1);
+          }
           if(count($arr) > 50){
             $arr = array_slice($arr, 0, 50);
           }

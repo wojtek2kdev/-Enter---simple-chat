@@ -48,6 +48,21 @@ const FriendsList = (function(){
         }
     };
 
+    const _sendFriendRequest = function(target){
+      $.ajax({
+          type: "POST",
+          url: "/php/user/friend-request.php",
+          data: 'action=add&user=' + $(target).text(),
+          cache: false
+        }).done(function(data){
+           if(data){
+             throw data;
+           }else{
+             target.parentElement.remove();
+           }
+        });
+    }
+
     const _searchUser = function(target){
       _Users.length = 0;
         console.log(`searching user.. (${target})`);
@@ -94,6 +109,8 @@ const FriendsList = (function(){
                   ).attr('aria', 'user')
                 );
               }
+
+              $('li[aria=user]>i').on('click', e => _sendFriendRequest($(e.target).siblings('span')[0]));
 
               _Users.length < maxUsers ? (()=>{$('#see_more').hide(); _Users.length = 0;})() : $('#see_more').show();
     };
