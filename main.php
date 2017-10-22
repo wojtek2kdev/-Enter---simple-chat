@@ -90,7 +90,15 @@
                 <section id="requests">
                     <div class="list requests">
                         <div id='friend-requests'><i class="add user icon" id='user-request'></i></div>
-                        <div id="request"></div>
+                        <div id="request">
+                          <i class='angle left icon' id='previous_request'></i>
+                          <div id="request_info">
+                            <span style="padding-left: 0.5rem;position: absolute;top: 0.8rem;">XXXXXXXXXXXXXXXXXXXX</span>
+                            <i id='accept' class="checkmark icon"></i>
+                            <i id='discard' class="remove icon"></i>
+                          </div>
+                          <i class="angle right icon" id="next_request"></i>
+                        </div>
                     </div>
                 </section>
             </div>
