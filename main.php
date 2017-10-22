@@ -90,7 +90,7 @@
                 </section>
                 <section id="requests">
                     <div class="list requests">
-                        <div id='friend-requests'><i class="add user icon" id='user-request'></i></div>
+                        <div id='friend-requests' title="Friend Requests"><i class="add user icon" id='user-request'></i></div>
                         <div id="request">
                           <i class='angle left icon' id='previous_request'></i>
                           <div id="request_info">
