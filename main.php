@@ -25,6 +25,7 @@
         echo(Element::getElement('nav-style'));
     ?>
     <link href="style/main-page/classes.css" rel="stylesheet">
+    <link href="style/main-page/ids.css" rel="stylesheet">
     <link href="style/menu/UI-Menu/menu.css" rel="stylesheet">
     <link href="style/inputs/UI-Input/input.css" rel="stylesheet">
     <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
@@ -88,7 +89,8 @@
                 </section>
                 <section id="requests">
                     <div class="list requests">
-                        <div style='width: 3rem; height: 3rem; border-right: 1px solid #DDDDDD;'><i class="add user icon" id='user-request'></i></div>
+                        <div id='friend-requests'><i class="add user icon" id='user-request'></i></div>
+                        <div id="request"></div>
                     </div>
                 </section>
             </div>

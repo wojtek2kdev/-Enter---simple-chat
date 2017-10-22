@@ -21,47 +21,13 @@
 .list {
 
     word-wrap: break-word;
+    position: relative;
 
 }
 
 .search {
 
     font-size: 1rem;
-
-}
-
-#friends-list {
-
-    flex: 1 1 auto;
-
-    position: relative;
-
-    border-bottom: 1px solid #DDDDDD;
-
-    overflow: auto;
-
-}
-
-#search-type {
-
-    flex: 0 1 auto;
-
-}
-
-#requests {
-
-    flex: 0 1 3rem;
-
-}
-
-#user-request {
-
-    font-size: 2rem;
-
-    padding-left: 0.5rem;
-    padding-top: 0.3rem;
-
-    cursor: default;
 
 }
 
@@ -142,29 +108,5 @@
 .list > ul > li > i.message:hover {
 
     color: lime;
-
-}
-
-#see_more {
-
-  position: sticky;
-
-  left: calc(50% - 5rem);
-
-  font-size: 1.3rem;
-
-  color: rgba(0,0,0,0.3);
-
-  width: 10rem;
-
-  text-align: center;
-
-}
-
-#see_more:hover{
-
-  color: black;
-
-  cursor: pointer;
 
 }
