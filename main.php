@@ -32,6 +32,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./scripts/friends-list.js" type="text/javascript"></script>
+    <script src="./scripts/friend-requests.js" type="text/javascript"></script>
 
     <style type="text/css">
         section {
@@ -93,13 +94,16 @@
                         <div id="request">
                           <i class='angle left icon' id='previous_request'></i>
                           <div id="request_info">
-                            <span style="padding-left: 0.5rem;position: absolute;top: 0.8rem;">XXXXXXXXXXXXXXXXXXXX</span>
+                            <span style="padding-left: 0.5rem;position: absolute;top: 0.8rem;"></span>
                             <i id='accept' class="checkmark icon"></i>
                             <i id='discard' class="remove icon"></i>
                           </div>
                           <i class="angle right icon" id="next_request"></i>
                         </div>
                     </div>
+                    <script>
+                      Requests.init(['testuser1','foobar','example']);
+                    </script>
                 </section>
             </div>
         </aside>
