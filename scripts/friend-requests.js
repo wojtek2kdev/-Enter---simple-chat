@@ -8,11 +8,37 @@ const Requests = (function(){
   const _next = 1;
 
   const _acceptRequest = function(){
-
+    $.ajax({
+        type: "POST",
+        url: "/php/user/friend-request.php",
+        data: 'action=accept&user=' + _userName,
+        cache: false
+      }).done(function(data){
+         if(data){
+           throw data;
+         }else{
+           _RequestsList.splice(_currentRequest, 1);
+           if(_currentRequest == _RequestsList.length) --_currentRequest;
+           _showRequest();
+         }
+      });
   };
 
   const _discardRequest = function(){
-
+    $.ajax({
+        type: "POST",
+        url: "/php/user/friend-request.php",
+        data: 'action=discard&user=' + _userName,
+        cache: false
+      }).done(function(data){
+         if(data){
+           throw data;
+         }else{
+            _RequestsList.splice(_currentRequest, 1);
+            if(_currentRequest == _RequestsList.length) --_currentRequest;
+            _showRequest();
+         }
+      });
   };
 
   const _switchRequest = function(direction){
@@ -21,7 +47,6 @@ const Requests = (function(){
       return;
     }else{
       _currentRequest += direction;
-      _userName  = _RequestsList[_currentRequest];
       _showRequest();
     }
   };
@@ -40,6 +65,13 @@ const Requests = (function(){
   };
 
   const _showRequest = function(){
+    if(!_RequestsList.length){
+      $('#request').hide();
+      return;
+    }else{
+      $('#request').show();
+    }
+    _userName = _RequestsList[_currentRequest];
     _disableArrow();
     $('#request_info>span').text(_userName);
   };
@@ -47,6 +79,9 @@ const Requests = (function(){
   const _events = function(){
     $('#next_request').on('click', () => _switchRequest(1));
     $('#previous_request').on('click', () => _switchRequest(-1));
+
+    $('#accept').on('click', _acceptRequest);
+    $('#discard').on('click', _discardRequest);
   };
 
   const _init = function(requests){
@@ -54,7 +89,7 @@ const Requests = (function(){
 
     _RequestsList = requests;
 
-    if(_RequestsList){
+    if(_RequestsList.length){
       $('#request').show();
       _userName = _RequestsList[0];
       _showRequest();

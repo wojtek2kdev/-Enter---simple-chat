@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <script>
-                      Requests.init(['testuser1','foobar','example']);
+                      Requests.init(<?php echo(json_encode(iterator_to_array(Account::getOtherRequests()))); ?>);
                     </script>
                 </section>
             </div>
