@@ -26,6 +26,7 @@
     ?>
     <link href="style/main-page/classes.css" rel="stylesheet">
     <link href="style/main-page/ids.css" rel="stylesheet">
+    <link href="style/main-page/tags.css" rel="stylesheet">
     <link href="style/menu/UI-Menu/menu.css" rel="stylesheet">
     <link href="style/inputs/UI-Input/input.css" rel="stylesheet">
     <link href="style/icons/UI-Icon/icon.css" rel="stylesheet">
@@ -107,6 +108,14 @@
                 </section>
             </div>
         </aside>
+        <section id="messages_section">
+          <div id="msg">
+            <div class="start">
+              <i class='users icon' style="font-size: 5rem;"></i>
+              <h1>Find friends and talk with them!</h1>
+            </div>
+          </div>
+        </section>
     </main>
 </body>
 </html>

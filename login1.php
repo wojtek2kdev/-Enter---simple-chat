@@ -2,6 +2,7 @@
 
     require_once(__DIR__.'/style/theme/login-elements.php');
     require_once(__DIR__.'/php/data-validation.php');
+    require_once(__DIR__.'/php/database/dbutils.php');
 
     $error = '';
 
