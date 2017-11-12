@@ -199,3 +199,46 @@
   flex-flow: column;
 
 }
+
+#list {
+
+  margin: 0;
+
+  list-style-type: none;
+
+  position: absolute;
+
+  top: 50%;
+
+  transform: translate(0, -50%);
+
+}
+
+#list > li {
+
+  display: inline-block;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  width: 18rem;
+  height: 2rem;
+
+  border-right: 1px solid #DDD;
+
+}
+
+#list > li:first-child {
+
+  border-left: 1px solid #DDD;
+  margin-left: 1rem;
+
+}
+
+#list > li:last-child {
+
+  border-right: 1px solid #DDD;
+  margin-right: 3rem;
+
+}

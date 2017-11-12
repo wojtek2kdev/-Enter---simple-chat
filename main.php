@@ -116,7 +116,9 @@
             </div>
             <section id='s_chat_list'>
               <div class="chat_list">
-
+                  <ul id='list'>
+                       <li>DDDDDDDDDDDDDDDDDDD</li> <li>DDDDDDDDDDDDDDDDDDD</li> <li>DDDDDDDDDDDDDDDDDDD</li>
+                  </ul>
               </div>
             </section>
             <section id="s_messages">
