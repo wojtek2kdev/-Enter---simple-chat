@@ -159,6 +159,32 @@
 
   white-space: nowrap;
 
-  overflow-x: scroll; 
+  overflow-x: hidden;
+
+}
+
+.chat_list > i {
+
+  font-size: 2rem !important;
+
+  position: absolute;
+
+  top: 50%;
+
+  transform: translate(0, -50%);
+
+  cursor: pointer;
+
+  opacity: 0.3 !important;
+
+  z-index: 1;
+
+  display: none !important;
+
+}
+
+.chat_list > i:hover {
+
+  opacity: 1 !important;
 
 }

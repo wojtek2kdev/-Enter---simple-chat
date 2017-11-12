@@ -155,6 +155,18 @@ const FriendsList = (function(){
 
     const _init = function(friends_list){
         $(document).ready(_closeChat);
+        $(document).ready(function(){
+          $('.chat_list').on('overflow', function(){
+            $('.chat_list>i').each(function(){
+              this.style.setProperty( 'display', 'inline-block', 'important' );
+            });
+          });
+          $('.chat_list').on('underflow', function(){
+            $('.chat_list>i').each(function(){
+              this.style.setProperty( 'display', 'none', 'important' );
+            });
+          });
+        });
         _generateFriendsList(friends_list);
         $('#see_more').hide();
         //Listeners
