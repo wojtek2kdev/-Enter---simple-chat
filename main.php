@@ -118,7 +118,7 @@
               <div class="chat_list">
                 <i class='chevron left icon' style='left: 0.5rem;'></i>
                   <ul id='list'>
-                       <li>DDDDDDDDDDDDDDDDDDD</li> <li>DDDDDDDDDDDDDDDDDDD</li> <li>DDDDDDDDDDDDDDDDDDD</li>
+        
                   </ul>
                   <i class="chevron right icon" style="right: 0;"></i>
               </div>

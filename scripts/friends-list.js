@@ -59,17 +59,38 @@ const FriendsList = (function(){
     };
 
     const _openChatWithFriend = function(friend){
+      console.log(friend);
       if(_ChatList.indexOf(friend) > -1){
         throw `Chat with ${friend} is already opened.`;
         return;
       }
        $('#msg>.start').hide();
        _ChatList.push(friend);
+       console.log(_ChatList);
        if(!_ChatOpened) _openChat();
+       $('#list').append(
+         $('<li></li>').append(
+           $('<span></span>').text(friend)
+         ).append(
+           $('<i class="remove icon"></i>')
+         )
+       );
+       $('#list>li>i').on('click', e => _closeChatWithFriend(e.target));
     };
 
-    const _closeChatWithFriend = function(){
-
+    const _closeChatWithFriend = function(friend){
+      friend.parentElement.remove();
+      for(let i in _ChatList){
+        if(_ChatList[i] == $(friend).siblings('span').text()){
+          console.log($(friend).siblings('span').text());
+          _ChatList.splice(i,1);
+        }
+      }
+            console.log(_ChatList);
+      if(!_ChatList.length){
+        _ChatOpened = false;
+        _closeChat();
+      }
     };
 
     const _searchUser = function(target){
@@ -154,6 +175,9 @@ const FriendsList = (function(){
     };
 
     const _init = function(friends_list){
+        _generateFriendsList(friends_list);
+        $('#see_more').hide();
+        //Listeners
         $(document).ready(_closeChat);
         $(document).ready(function(){
           $('.chat_list').on('overflow', function(){
@@ -167,9 +191,6 @@ const FriendsList = (function(){
             });
           });
         });
-        _generateFriendsList(friends_list);
-        $('#see_more').hide();
-        //Listeners
         $('.comment.icon.message').on('click', e => _openChatWithFriend($(e.target).siblings('span').text()));
         $('.ban.icon.remove_friend').on('click', e => _removeFriend(e.target.parentElement));
         $('.ui.two.item.menu').children().on('click', e => _switchSearch(e.target));
