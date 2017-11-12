@@ -114,6 +114,21 @@
               <i class='users icon' style="font-size: 5rem;"></i>
               <h1>Find friends and talk with them!</h1>
             </div>
+            <section id='s_chat_list'>
+              <div class="chat_list">
+
+              </div>
+            </section>
+            <section id="s_messages">
+              <div class="messages">
+
+              </div>
+            </section>
+            <section id="s_write">
+              <div class="write_section">
+
+              </div>
+            </section>
           </div>
         </section>
     </main>

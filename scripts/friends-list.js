@@ -2,6 +2,12 @@ const FriendsList = (function(){
 
     const _Users = [];
 
+    const _ChatList = [];
+
+    let _ChatElements = [];
+
+    let _ChatOpened = false;
+
     const _removeFriend = function(friend){
         let result = confirm('Are you sure to delete this user?');
         if(result){
@@ -26,28 +32,6 @@ const FriendsList = (function(){
             }
     };
 
-    const _search = function(target, key){
-        $('#search_bar').children()[0].id == 'search_friend' ? _searchFriend(target) : (() => {if(key==13)_searchUser(target)})();
-    }
-
-    const _switchSearch = function(item){
-      let searchBarTypes = $('.ui.two.item.menu');
-        for(let i of searchBarTypes.children()){
-          i.className = 'item';
-        }
-        item.className = 'active item';
-        if(item == searchBarTypes.children()[0]){
-          $('#items>li[aria=user]').remove();
-          $('#search_bar').children()[0].id = 'search_friend';
-          $('#search_friend').attr('placeholder','Find friend from list...');
-          $('li[aria=friend]').show();
-        }else{
-          $('#search_bar').children()[0].id = 'search_user';
-          $('#search_user').attr('placeholder','Find user in Enter... (press enter to search)');
-          $('li[aria=friend]').hide();
-        }
-    };
-
     const _sendFriendRequest = function(target){
       $.ajax({
           type: "POST",
@@ -62,6 +46,31 @@ const FriendsList = (function(){
            }
         });
     }
+    const _generateFriendsList = function(friends_list){
+        for(let nick of friends_list){
+            $('#items').append(
+              $('<li></li>').append(
+                $('<i></i>').attr('class', 'comment icon message'),
+                $('<i></i>').attr('class', 'ban icon remove_friend'),
+                $('<span></span>').text(nick)
+              ).attr('aria', 'friend')
+            );
+        }
+    };
+
+    const _openChatWithFriend = function(friend){
+      if(_ChatList.indexOf(friend) > -1){
+        throw `Chat with ${friend} is already opened.`;
+        return;
+      }
+       $('#msg>.start').hide();
+       _ChatList.push(friend);
+       if(!_ChatOpened) _openChat();
+    };
+
+    const _closeChatWithFriend = function(){
+
+    };
 
     const _searchUser = function(target){
       _Users.length = 0;
@@ -85,18 +94,6 @@ const FriendsList = (function(){
         _seeMoreUsers();
     };
 
-    const _generateFriendsList = function(friends_list){
-        for(let nick of friends_list){
-            $('#items').append(
-              $('<li></li>').append(
-                $('<i></i>').attr('class', 'comment icon message'),
-                $('<i></i>').attr('class', 'ban icon remove_friend'),
-                $('<span></span>').text(nick)
-              ).attr('aria', 'friend')
-            );
-        }
-    };
-
     const _seeMoreUsers = function(){
               let users;
               const maxUsers = 10;
@@ -115,10 +112,53 @@ const FriendsList = (function(){
               _Users.length < maxUsers ? (()=>{$('#see_more').hide(); _Users.length = 0;})() : $('#see_more').show();
     };
 
+    const _search = function(target, key){
+        $('#search_bar').children()[0].id == 'search_friend' ? _searchFriend(target) : (() => {if(key==13)_searchUser(target)})();
+    }
+
+    const _switchSearch = function(item){
+      let searchBarTypes = $('.ui.two.item.menu');
+        for(let i of searchBarTypes.children()){
+          i.className = 'item';
+        }
+        item.className = 'active item';
+        if(item == searchBarTypes.children()[0]){
+          $('#items>li[aria=user]').remove();
+          $('#search_bar').children()[0].id = 'search_friend';
+          $('#search_friend').attr('placeholder','Find friend from list...');
+          $('li[aria=friend]').show();
+        }else{
+          $('#search_bar').children()[0].id = 'search_user';
+          $('#search_user').attr('placeholder','Find user in Enter... (press enter to search)');
+          $('li[aria=friend]').hide();
+        }
+    };
+
+    const _closeChat = function(){
+      _ChatElements = [
+        $('#s_chat_list'),
+        $('#s_messages'),
+        $('#s_write')
+      ];
+      for(let i of _ChatElements){
+        $(i).hide();
+      }
+      $('#msg>.start').show();
+    };
+
+    const _openChat = function(){
+      for(let i of _ChatElements){
+        $(i).show();
+      }
+      $('#msg>.start').hide();
+    };
+
     const _init = function(friends_list){
+        $(document).ready(_closeChat);
         _generateFriendsList(friends_list);
         $('#see_more').hide();
         //Listeners
+        $('.comment.icon.message').on('click', e => _openChatWithFriend($(e.target).siblings('span').text()));
         $('.ban.icon.remove_friend').on('click', e => _removeFriend(e.target.parentElement));
         $('.ui.two.item.menu').children().on('click', e => _switchSearch(e.target));
         $('#search_friend').on('keyup', e => _search(e.target.value, e.which));
