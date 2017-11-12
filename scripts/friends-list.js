@@ -72,7 +72,7 @@ const FriendsList = (function(){
          $('<li></li>').append(
            $('<span></span>').text(friend)
          ).append(
-           $('<i class="remove icon"></i>')
+           $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')
          )
        );
        $('#list>li>i').on('click', e => _closeChatWithFriend(e.target));
