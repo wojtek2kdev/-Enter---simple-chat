@@ -231,22 +231,25 @@
   width: 20rem;
   height: 2rem;
 
-  border-right: 1px solid #DDD;
+  background-color: #F9F9F9;
+
+  border-radius: 4rem;
 
   line-height: 2rem;
+
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 
 }
 
 #list > li:first-child {
 
   margin-left: 1rem;
-  border-right: 1px solid #DDD !important;
 
 }
 
 #list > li:last-child {
 
-  border-right: none;
   margin-right: 3rem;
 
 }
@@ -259,7 +262,13 @@
 
 }
 
-#list > li > i:hover {
+#list > li:focus {
+
+  background-color: #F3F3F3;
+
+}
+
+#list > li > i:visited {
 
   cursor: pointer;
 

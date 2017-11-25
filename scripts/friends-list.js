@@ -174,6 +174,19 @@ const FriendsList = (function(){
       $('#msg>.start').hide();
     };
 
+    const _slide = function(direction){
+      const _friendsBar = document.getElementsByClassName('chat_list')[0];
+      const _max = _friendsBar.scrollWidth - _friendsBar.clientWidth;
+      const _current = _friendsBar.scrollLeft;
+      let _scale = 22 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+      console.log(_scale + ' ' + _max);
+      if(direction == 'right'){
+       if(_current < _max) _friendsBar.scrollLeft += _scale;
+     } else{
+       if(_current > 0) _friendsBar.scrollLeft -= _scale;
+     }
+    };
+
     const _init = function(friends_list){
         _generateFriendsList(friends_list);
         $('#see_more').hide();
@@ -184,6 +197,8 @@ const FriendsList = (function(){
             $('.chat_list>i').each(function(){
               this.style.setProperty( 'display', 'inline-block', 'important' );
             });
+            $($('.chat_list>i')[0]).on('click', function(){_slide('left');});
+            $($('.chat_list>i')[1]).on('click', function(){_slide('right');});
           });
           $('.chat_list').on('underflow', function(){
             $('.chat_list>i').each(function(){
