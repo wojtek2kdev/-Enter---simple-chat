@@ -69,7 +69,7 @@ const FriendsList = (function(){
        console.log(_ChatList);
        if(!_ChatOpened) _openChat();
        $('#list').append(
-         $('<li></li>').append(
+         $('<li></li>').attr('tabindex','1').append(
            $('<span></span>').text(friend)
          ).append(
            $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')

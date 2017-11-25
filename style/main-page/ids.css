@@ -264,7 +264,9 @@
 
 #list > li:focus {
 
-  background-color: #F3F3F3;
+  background-color: #F0F0F0;
+
+  outline: 0;
 
 }
 
