@@ -262,14 +262,6 @@
 
 }
 
-#list > li:focus {
-
-  background-color: #F0F0F0;
-
-  outline: 0;
-
-}
-
 #list > li > i:visited {
 
   cursor: pointer;

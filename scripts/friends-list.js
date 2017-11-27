@@ -69,13 +69,21 @@ const FriendsList = (function(){
        console.log(_ChatList);
        if(!_ChatOpened) _openChat();
        $('#list').append(
-         $('<li></li>').attr('tabindex','1').append(
+         $('<li></li>').append(
            $('<span></span>').text(friend)
          ).append(
            $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')
          )
+       ).on('click', e => _changeChat(e.target)).on(
+         'click', 'span', e => _changeChat(e.target.parentElement)
        );
        $('#list>li>i').on('click', e => _closeChatWithFriend(e.target));
+       _ChatList.length == 1 ? _changeChat($('#list>li')) : _changeChat($('#list>li:last-child'));
+    };
+
+    const _changeChat = function(target){
+     $('#list>li').css('background-color', '#F9F9F9');
+     $(target).css('background-color', 'red');
     };
 
     const _closeChatWithFriend = function(friend){
