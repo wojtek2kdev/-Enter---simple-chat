@@ -68,20 +68,23 @@ const FriendsList = (function(){
        _ChatList.push(friend);
        console.log(_ChatList);
        if(!_ChatOpened) _openChat();
+       let node = $('<li></li>').append(
+         $('<span></span>').text(friend)
+       ).append(
+         $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')
+       );
+       $(node).on('click', e => _changeChat(e.target)).on(
+         'click', 'span', e => {e.stopPropagation(); $(e.target.parentElement).trigger('click')}
+       );
        $('#list').append(
-         $('<li></li>').append(
-           $('<span></span>').text(friend)
-         ).append(
-           $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')
-         )
-       ).on('click', e => _changeChat(e.target)).on(
-         'click', 'span', e => _changeChat(e.target.parentElement)
+         node
        );
        $('#list>li>i').on('click', e => _closeChatWithFriend(e.target));
        _ChatList.length == 1 ? _changeChat($('#list>li')) : _changeChat($('#list>li:last-child'));
     };
 
     const _changeChat = function(target){
+     console.log(target);
      $('#list>li').css('background-color', '#F9F9F9');
      $(target).css('background-color', 'red');
     };
@@ -99,6 +102,7 @@ const FriendsList = (function(){
         _ChatOpened = false;
         _closeChat();
       }
+      _changeChat($('#list>li:last-child'));
     };
 
     const _searchUser = function(target){
