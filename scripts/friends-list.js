@@ -71,7 +71,7 @@ const FriendsList = (function(){
        let node = $('<li></li>').append(
          $('<span></span>').text(friend)
        ).append(
-         $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>')
+         $('<i class="remove icon" style="position: absolute; right: 0.5rem;"></i>').on('click', e => {e.stopPropagation(); _closeChatWithFriend(e.target)})
        );
        $(node).on('click', e => _changeChat(e.target)).on(
          'click', 'span', e => {e.stopPropagation(); $(e.target.parentElement).trigger('click')}
@@ -79,17 +79,19 @@ const FriendsList = (function(){
        $('#list').append(
          node
        );
-       $('#list>li>i').on('click', e => _closeChatWithFriend(e.target));
        _ChatList.length == 1 ? _changeChat($('#list>li')) : _changeChat($('#list>li:last-child'));
     };
 
     const _changeChat = function(target){
-     console.log(target);
+    // console.log($(target));
      $('#list>li').css('background-color', '#F9F9F9');
-     $(target).css('background-color', 'red');
-    };
+    // console.log($(target));
+     $(target).css('background-color', '#DDD');
+   };
 
     const _closeChatWithFriend = function(friend){
+      let index = $(friend.parentElement).index() + 1;
+      console.log(index);
       friend.parentElement.remove();
       for(let i in _ChatList){
         if(_ChatList[i] == $(friend).siblings('span').text()){
@@ -102,7 +104,8 @@ const FriendsList = (function(){
         _ChatOpened = false;
         _closeChat();
       }
-      _changeChat($('#list>li:last-child'));
+    //  console.log($('#list>li:last-child')[0]);
+      $(`#list>li:nth-child(${index})`)[0] ? _changeChat(`#list>li:nth-child(${index})`) : _changeChat(`#list>li:nth-child(${index - 1})`);
     };
 
     const _searchUser = function(target){

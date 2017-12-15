@@ -19,7 +19,7 @@
                 <a href='/'><div class='logo'></div></a>
                      <div class='login'>
                           <span>Do you have account? So, </span>
-                         <a href='/login.php'><button id='login' class='ui basic green button'>Log In</button></a>
+                         <a href='/login1.php'><button id='login' class='ui basic green button'>Log In</button></a>
                       </div>
              </nav>
             ";
