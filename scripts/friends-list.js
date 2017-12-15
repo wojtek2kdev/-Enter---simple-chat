@@ -192,14 +192,19 @@ const FriendsList = (function(){
     const _slide = function(direction){
       const _friendsBar = document.getElementsByClassName('chat_list')[0];
       const _max = _friendsBar.scrollWidth - _friendsBar.clientWidth;
-      const _current = _friendsBar.scrollLeft;
+      console.log(`max: ${_max}`);
+      console.log(_friendsBar.scrollWidth);
+      console.log($('#list').width());
+      let _current = $('#list').css('left');
+      _current = parseInt(String(_current).slice(0, _current.length-2));
+      console.log(_current);
       let _scale = 22 * parseFloat(getComputedStyle(document.documentElement).fontSize);
       console.log(_scale + ' ' + _max);
-      if(direction == 'right'){
-       if(_current < _max) _friendsBar.scrollLeft += _scale;
-     } else{
-       if(_current > 0) _friendsBar.scrollLeft -= _scale;
-     }
+        if(direction == 'right'){
+         if(_scale <= _max) $('#list').animate({left: `-=${_scale-16}`}, 500);//_friendsBar.scrollLeft += _scale;
+       } else{
+         if(-_current >= _scale - 16) $('#list').animate({left: `+=${_scale-16}`}, 500);//_friendsBar.scrollLeft -= _scale;
+       }
     };
 
     const _init = function(friends_list){

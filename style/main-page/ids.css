@@ -260,14 +260,6 @@
 
   cursor: pointer;
 
-  background-color: rgba(0, 179, 223, 0.1);
-
-}
-
-#list > li > i:visited {
-
-  cursor: pointer;
-
-  color: red;
+  background-color: rgba(0, 179, 223, 0.1) !important;
 
 }
