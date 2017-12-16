@@ -189,24 +189,6 @@ const FriendsList = (function(){
       $('#msg>.start').hide();
     };
 
-    const _slide = function(direction){
-      const _friendsBar = document.getElementsByClassName('chat_list')[0];
-      const _max = _friendsBar.scrollWidth - _friendsBar.clientWidth;
-      console.log(`max: ${_max}`);
-      console.log(_friendsBar.scrollWidth);
-      console.log($('#list').width());
-      let _current = $('#list').css('left');
-      _current = parseInt(String(_current).slice(0, _current.length-2));
-      console.log(_current);
-      let _scale = 22 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-      console.log(_scale + ' ' + _max);
-        if(direction == 'right'){
-         if(_scale <= _max) $('#list').animate({left: `-=${_scale-16}`}, 500);//_friendsBar.scrollLeft += _scale;
-       } else{
-         if(-_current >= _scale - 16) $('#list').animate({left: `+=${_scale-16}`}, 500);//_friendsBar.scrollLeft -= _scale;
-       }
-    };
-
     const _init = function(friends_list){
         _generateFriendsList(friends_list);
         $('#see_more').hide();
@@ -217,8 +199,8 @@ const FriendsList = (function(){
             $('.chat_list>i').each(function(){
               this.style.setProperty( 'display', 'inline-block', 'important' );
             });
-            $($('.chat_list>i')[0]).on('click', function(){_slide('left');});
-            $($('.chat_list>i')[1]).on('click', function(){_slide('right');});
+            $($('.chat_list>i')[0]).on('mouseover', function(){setTimeout(function(){_slide('left');}, 500)});
+            $($('.chat_list>i')[1]).on('mouseover', function(){setTimeout(function(){_slide('right');}, 500)});
           });
           $('.chat_list').on('underflow', function(){
             $('.chat_list>i').each(function(){

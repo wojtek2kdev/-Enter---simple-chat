@@ -116,11 +116,9 @@
             </div>
             <section id='s_chat_list'>
               <div class="chat_list">
-                <i class='chevron left icon' style='display: none ! important;position: fixed;top: 6.4rem;'></i>
                   <ul id='list'>
 
                   </ul>
-                  <i class="chevron right icon" style="right: 0; display: none ! important;position: fixed;top: 6.4rem;"></i>
               </div>
             </section>
             <section id="s_messages">
