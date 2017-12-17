@@ -134,6 +134,22 @@
   flex: 0 1 auto;
 }
 
+#s_write {
+  height: 7rem;
+  position: relative;
+}
+
+.write_section {
+  width: 40rem;
+  height: 100%;
+
+  background: grey;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 #s_messages {
 
   flex: 1 1 auto;
