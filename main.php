@@ -34,6 +34,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./scripts/friends-list.js" type="text/javascript"></script>
     <script src="./scripts/friend-requests.js" type="text/javascript"></script>
+    <script src="./scripts/messanger.js" type="text/javascript"></script>
 
     <style type="text/css">
         section {
@@ -128,10 +129,13 @@
             </section>
             <section id="s_write">
               <div class="write_section">
-                  <form action="">
+                  <form action="" method='post' id='messanger'>
                     <textarea spellcheck="false" id="writer"></textarea>
                     <button type="submit" class="ui inverted green button" id="send_msg">Send</button>
                   </form>
+                  <script>
+                    Messanger.init();
+                  </script>
               </div>
             </section>
           </div>
