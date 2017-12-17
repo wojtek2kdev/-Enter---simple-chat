@@ -128,7 +128,10 @@
             </section>
             <section id="s_write">
               <div class="write_section">
-
+                  <form action="">
+                    <textarea spellcheck="false" id="writer"></textarea>
+                    <button type="submit" class="ui inverted green button" id="send_msg">Send</button>
+                  </form>
               </div>
             </section>
           </div>

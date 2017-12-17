@@ -140,14 +140,42 @@
 }
 
 .write_section {
-  width: 40rem;
+  width: 45rem;
   height: 100%;
 
-  background: grey;
-
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
+
+  border-radius: 0.5rem 0.5rem 0 0;
+  border: 1px solid #DDD;
+}
+
+#writer {
+  width: 35rem;
+  height: 6rem;
+
+  resize: none;
+
+  border: 1px solid #DDD;
+  border-radius: 0.2rem;
+
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+#send_msg {
+
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
 }
 
 #s_messages {
